@@ -11,7 +11,7 @@ public class Connect {
 
     public Connect(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql//localhost:3306/bankSystem", "root", "hello_World2005!");  // establishes database connection
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bankSystem", "root", "hello_World2005!");  // establishes database connection
             statement = connection.createStatement();   // create Statement object that is used for sending SQL queries and retrieving data from database
         }
         catch(Exception e){
