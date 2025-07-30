@@ -1,13 +1,22 @@
 package bank.management.system;
 
 import java.awt.*;
+
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class Login extends JFrame{
 
-    JLabel label1, label2, label3;
-    JTextField textField2;
-    JPasswordField passwordField2;
+    // components to be placed on window 
+    JLabel welcomeLabel, cardNoLabel, pinLabel;  // labels for welcome message, card number, and pin
+    JTextField cardNoText;  // text field for card number
+    JPasswordField pinField;  // password field for pin
+    JButton signInButton, clearButton, signUpButton; // buttons for sign in, clear, and sign up
+
+    // create a LineBorder with a specific color and thickness
+    // Border blackBorder = new LineBorder(Color.BLACK, 2);
+    Border whiteBorder =  new LineBorder(Color.WHITE, 2);
 
     Login(){
         super("Bank Management System");    // call parent constructor
@@ -18,7 +27,8 @@ public class Login extends JFrame{
         setLocationRelativeTo(null); // center align window
         setResizable(false); // fix size of window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set default close operation
-        
+
+        // add icons to window
         // add bank icon to window
         ImageIcon bank1 = new ImageIcon(ClassLoader.getSystemResource("icons/bank.png"));   // load the image
         Image bank2 = bank1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT); // resize the image
@@ -35,38 +45,73 @@ public class Login extends JFrame{
         cardImage.setBounds(700, 345, 100, 100);    // resize and position the label
         add(cardImage); // add label to window
 
+        // add labels and respective text fields to window
         // add welcome label
-        label1 = new JLabel("WELCOME TO ATM");  // create label
-        label1.setForeground(Color.WHITE);  // set text to white
-        label1.setFont(new Font("AvantGarde", Font.BOLD, 38));  // set up font
-        label1.setBounds(240, 120, 450, 40);    // set bounds
-        add(label1);    // add label to window
+        welcomeLabel = new JLabel("WELCOME TO ATM");  // create welcome label
+        welcomeLabel.setForeground(Color.WHITE);  // set text color to white
+        welcomeLabel.setFont(new Font("Britannic Bold", Font.BOLD, 43));  // set font
+        welcomeLabel.setBounds(240, 120, 450, 40);    // set bounds
+        add(welcomeLabel);    // add welcome label to window
 
         // add card number label
-        label2 = new JLabel("Card No:");    // create label
-        label2.setForeground(Color.WHITE);  // set text to white
-        label2.setFont(new Font("Dialog", Font.BOLD, 28));  // set up font
-        label2.setBounds(240, 190, 375, 30);    // set bounds
-        add(label2);    // add label to window
+        cardNoLabel = new JLabel("Card No:");    // create card number label
+        cardNoLabel.setForeground(Color.WHITE);  // set text color to white
+        cardNoLabel.setFont(new Font("Britannic Bold", Font.BOLD, 28));  // set font
+        cardNoLabel.setBounds(240, 190, 375, 30);    // set bounds
+        add(cardNoLabel);    // add card number label to window
 
         // add text field for card number
-        textField2 = new JTextField(15);    // create text field
-        textField2.setBounds(370, 190, 230, 30);    // set bounds
-        textField2.setFont(new Font("Arial", Font.BOLD, 14));   // set up font
-        add(textField2);    // add text field to window
+        cardNoText = new JTextField(15);    // create card number text field
+        cardNoText.setBounds(370, 190, 230, 30);    // set bounds
+        cardNoText.setFont(new Font("Arial", Font.BOLD, 14));   // set font  
+        cardNoText.setBackground(Color.DARK_GRAY);  // set background color to dark gray
+        cardNoText.setForeground(Color.WHITE);  // set text color to white
+        cardNoText.setBorder(whiteBorder);  // set border color to white
+        add(cardNoText);    // add card number text field to window
 
         // add pin label
-        label3 = new JLabel("PIN:");    // create label
-        label3.setForeground(Color.WHITE);  // set text to white
-        label3.setFont(new Font("Dialog", Font.BOLD, 28));  // set up font
-        label3.setBounds(240, 230, 375, 30);    // set bounds
-        add(label3);    // add label to window
+        pinLabel = new JLabel("PIN:");    // create pin label
+        pinLabel.setForeground(Color.WHITE);  // set text to white
+        pinLabel.setFont(new Font("Britannic Bold", Font.BOLD, 28));  // set font
+        pinLabel.setBounds(240, 230, 375, 30);    // set bounds
+        add(pinLabel);    // add pin label to window
 
         // add password field for pin
-        passwordField2 = new JPasswordField(15);    // create password field
-        passwordField2.setBounds(370, 230, 230, 30);    // set bounds
-        passwordField2.setFont(new Font("Arial", Font.BOLD, 14));   // set up font
-        add(passwordField2);    // add password field to window
+        pinField = new JPasswordField(15);    // create pin password field
+        pinField.setBounds(370, 230, 230, 30);    // set bounds
+        pinField.setFont(new Font("Arial", Font.BOLD, 14));   // set font
+        pinField.setBackground(Color.DARK_GRAY);  // set background color to dark gray
+        pinField.setForeground(Color.WHITE);  // set text color to white
+        pinField.setBorder(whiteBorder);  // set border color to white
+        add(pinField);    // add pin password field to window   
+
+        // add buttons to window
+        // add sign in button
+        signInButton = new JButton("SIGN IN");  // create sign in button
+        signInButton.setFont(new Font("Britannic Bold", Font.BOLD, 14));    // set font
+        signInButton.setForeground(Color.WHITE);    // set text color to white
+        signInButton.setBackground(Color.DARK_GRAY);    // set background color to dark gray
+        signInButton.setBorder(whiteBorder);    // set border color to white
+        signInButton.setBounds(310, 295, 100, 30);  // set bounds
+        add(signInButton);  // add sign in button to window
+
+        // add clear button
+        clearButton = new JButton("CLEAR"); // create clear button
+        clearButton.setFont(new Font("Britannic Bold", Font.BOLD, 14)); // set font
+        clearButton.setForeground(Color.WHITE); // set text color to white
+        clearButton.setBackground(Color.DARK_GRAY); // set background color to dark gray
+        clearButton.setBorder(whiteBorder); // set border color to white
+        clearButton.setBounds(430, 295, 100, 30);   // set bounds
+        add(clearButton);   // add clear button to window
+
+        // add sign up button
+        signUpButton = new JButton("SIGN UP");  // create sign up button
+        signUpButton.setFont(new Font("Britannic Bold", Font.BOLD, 14));    // set font
+        signUpButton.setForeground(Color.WHITE);    // set text color to white
+        signUpButton.setBackground(Color.DARK_GRAY);    // set background color to dark gray
+        signUpButton.setBorder(whiteBorder);    // set border color to white
+        signUpButton.setBounds(310, 345, 220, 30);  // set bounds
+        add(signUpButton);  // add sign up button to window
 
         // set background of window
         ImageIcon bg1 = new ImageIcon(ClassLoader.getSystemResource("icons/backbg2.jpg"));   // load the image
@@ -78,6 +123,7 @@ public class Login extends JFrame{
 
         setVisible(true);   // make window visible
     }
+
     public static void main(String[] args){
         new Login();
     }
