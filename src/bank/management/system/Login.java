@@ -1,12 +1,14 @@
 package bank.management.system;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-public class Login extends JFrame{
+public class Login extends JFrame implements ActionListener{
 
     // components to be placed on window 
     JLabel welcomeLabel, cardNoLabel, pinLabel;  // labels for welcome message, card number, and pin
@@ -67,6 +69,7 @@ public class Login extends JFrame{
         cardNoText.setBackground(Color.DARK_GRAY);  // set background color to dark gray
         cardNoText.setForeground(Color.WHITE);  // set text color to white
         cardNoText.setBorder(whiteBorder);  // set border color to white
+        cardNoText.setCaretColor(Color.WHITE); // make cursor white
         add(cardNoText);    // add card number text field to window
 
         // add pin label
@@ -83,6 +86,7 @@ public class Login extends JFrame{
         pinField.setBackground(Color.DARK_GRAY);  // set background color to dark gray
         pinField.setForeground(Color.WHITE);  // set text color to white
         pinField.setBorder(whiteBorder);  // set border color to white
+        pinField.setCaretColor(Color.WHITE);    // make cursor white
         add(pinField);    // add pin password field to window   
 
         // add buttons to window
@@ -93,6 +97,7 @@ public class Login extends JFrame{
         signInButton.setBackground(Color.DARK_GRAY);    // set background color to dark gray
         signInButton.setBorder(whiteBorder);    // set border color to white
         signInButton.setBounds(310, 295, 100, 30);  // set bounds
+        signInButton.addActionListener(this);   // add ActionListener
         add(signInButton);  // add sign in button to window
 
         // add clear button
@@ -102,6 +107,7 @@ public class Login extends JFrame{
         clearButton.setBackground(Color.DARK_GRAY); // set background color to dark gray
         clearButton.setBorder(whiteBorder); // set border color to white
         clearButton.setBounds(430, 295, 100, 30);   // set bounds
+        clearButton.addActionListener(this);    // add ActionListener
         add(clearButton);   // add clear button to window
 
         // add sign up button
@@ -111,6 +117,7 @@ public class Login extends JFrame{
         signUpButton.setBackground(Color.DARK_GRAY);    // set background color to dark gray
         signUpButton.setBorder(whiteBorder);    // set border color to white
         signUpButton.setBounds(310, 345, 220, 30);  // set bounds
+        signUpButton.addActionListener(this);   // add ActionListener
         add(signUpButton);  // add sign up button to window
 
         // set background of window
@@ -122,6 +129,28 @@ public class Login extends JFrame{
         add(bgImage);   // add label to window
 
         setVisible(true);   // make window visible
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+        try{
+            // sign in button clicked
+            if(e.getSource() == signInButton){
+
+            }
+            // clear button clicked
+            else if(e.getSource() == clearButton){
+                cardNoText.setText(""); // clear text in card number text field
+                pinField.setText("");   // clear text in pin password field
+            }
+            // sign up button clicked
+            else if(e.getSource() ==  signUpButton){
+
+            }
+        } 
+        catch(Exception E){
+            E.printStackTrace();    // if exception is caught, print stack trace
+        }
     }
 
     public static void main(String[] args){
