@@ -18,4 +18,8 @@ public class Connect {
             e.printStackTrace();    // if exception is thrown, print stack trace
         }
     }
+
+    public Connection getConnection(){
+        return connection;
+    }
 }
