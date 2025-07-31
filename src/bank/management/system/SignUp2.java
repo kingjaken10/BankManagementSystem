@@ -1,10 +1,12 @@
 package bank.management.system;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-public class SignUp2 extends JFrame{
+public class SignUp2 extends JFrame implements ActionListener{
 
     // components to be placed on window
     JTextField ageText, homePhoneText, workPhoneText;   // text fields
@@ -245,9 +247,16 @@ public class SignUp2 extends JFrame{
         nextButton.setBounds(645, 720, 80, 30); // set bounds
         nextButton.setBackground(Color.BLACK);  // set button color to black
         nextButton.setForeground(Color.WHITE);  // set text color to white
+        nextButton.addActionListener(this); // add ActionListener
         add(nextButton);    // add next button to window
 
         setVisible(true);   // make window visible
+    }
+
+    @Override
+    // next button is clicked
+    public void actionPerformed(ActionEvent e){
+        
     }
 
     public static void main(String[] args){
