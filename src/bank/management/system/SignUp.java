@@ -1,6 +1,7 @@
 package bank.management.system;
 
 import java.util.Random;
+import java.sql.*;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -17,7 +18,7 @@ public class SignUp extends JFrame implements ActionListener{
     JTextField firstNameText, lastNameText, emailText, addressText, cityText, stateText, zipText;   // text fields
     JDateChooser dateChooser;   // date chooser for DOB
     JRadioButton maleButton, femaleButton;  // radio buttons to indicate gender
-    JRadioButton marriedButton, singleButton, otherButton;   // radio buttons to indicate martial status
+    JRadioButton marriedButton, singleButton, otherButton;   // radio buttons to indicate marital status
     JButton nextButton; // button to move to next page
 
     // generate a random four digit number to use for the application form number
@@ -153,14 +154,14 @@ public class SignUp extends JFrame implements ActionListener{
         emailText.setForeground(Color.BLACK);   // set text color to black
         add(emailText); // add email text field to window
         
-        // add martial status label
-        JLabel martialStatusLabel = new JLabel("Martial Status:");   // create martial status label
-        martialStatusLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
-        martialStatusLabel.setBounds(100, 440, 200, 30);  // set bounds
-        martialStatusLabel.setForeground(Color.BLACK);    // set text color to black
-        add(martialStatusLabel);  // add martial status label to window
+        // add marital status label
+        JLabel maritalStatusLabel = new JLabel("Marital Status:");   // create marital status label
+        maritalStatusLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        maritalStatusLabel.setBounds(100, 440, 200, 30);  // set bounds
+        maritalStatusLabel.setForeground(Color.BLACK);    // set text color to black
+        add(maritalStatusLabel);  // add marital status label to window
 
-        // add martial status radio buttons
+        // add marital status radio buttons
         // add married radio button
         marriedButton = new JRadioButton("Married");    // create married radio button
         marriedButton.setFont(new Font("Raleway", Font.BOLD, 14)); // set font
@@ -234,7 +235,7 @@ public class SignUp extends JFrame implements ActionListener{
         add(stateText); // add state text field to window
 
         // add zip code label
-        JLabel zipLabel = new JLabel("Pin Code:");   // create zip code label
+        JLabel zipLabel = new JLabel("Zip Code:");   // create zip code label
         zipLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
         zipLabel.setBounds(100, 640, 200, 30);  // set bounds
         zipLabel.setForeground(Color.BLACK);    // set text color to black
@@ -260,8 +261,68 @@ public class SignUp extends JFrame implements ActionListener{
     }
 
     @Override
+    // next button is clicked
     public void actionPerformed(ActionEvent e){
+        // get user information
+        String firstName = firstNameText.getText(); // get first name
+        String lastName = lastNameText.getText();   // get last name
+        String dob = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText(); // get DOB
+        String email = emailText.getText(); // get email address
+        String address = addressText.getText(); // get address
+        String city = cityText.getText();   // get city
+        String state = stateText.getText(); // get state
+        String zipCode = zipText.getText(); // get zip code
 
+        // get gender
+        String gender = "";
+        if(maleButton.isSelected()) gender = "Male";    // is male
+        else if(femaleButton.isSelected()) gender = "Female";   // is female
+
+        // get marital status
+        String maritalStatus = "";
+        if(marriedButton.isSelected()) maritalStatus = "Married";   // is married
+        else if(singleButton.isSelected()) maritalStatus = "Single";    // is single
+        else if(otherButton.isSelected()) maritalStatus = "Other";  // other
+
+        try{
+            // if all fields are filled, update the database
+            if(!firstName.equals("") && !lastName.equals("") && !dob.equals("" ) && !gender.equals("") 
+               && !email.equals("") && !maritalStatus.equals("") && !address.equals("")&& !city.equals("") 
+               && !state.equals("") && !zipCode.equals("")){
+                
+                Connect con1 = new Connect();   // create a Connect object
+                Connection conn = con1.getConnection(); // get the connection from the Connect class
+
+                // String q = "insert into SignUp values('"+formNo+"', '"+firstName+"', '"+lastName+"', '"+dob+"', '"+gender+"', '"+email+"', '"+maritalStatus+"', '"+address+"', '"+city+"', '"+state+"', '"+zipCode+"')";
+                
+                String query = "INSERT INTO SignUp (Form_No, First_Name, Last_Name, DOB, Gender, Email_Address, Marital_Status, Address, City, State, Zip_Code) "
+                           + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";   // String that will be used to update database
+                
+                PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
+
+                // set the parameters for the query
+                preparedStatement.setString(1, formNo);
+                preparedStatement.setString(2, firstName);
+                preparedStatement.setString(3, lastName);
+                preparedStatement.setString(4, dob);
+                preparedStatement.setString(5, gender);
+                preparedStatement.setString(6, email);
+                preparedStatement.setString(7, maritalStatus);
+                preparedStatement.setString(8, address);
+                preparedStatement.setString(9, city);
+                preparedStatement.setString(10, state);
+                preparedStatement.setString(11, zipCode);
+
+                preparedStatement.executeUpdate();    // update database
+
+                new SignUp2();  // go to next page in sign up process
+                setVisible(false);  // make this frame invisible (this page dissappears)
+            }
+            else JOptionPane.showMessageDialog(null, "Fill in all fields"); // display message if all fields are not filled
+        }
+        catch(Exception E){
+            E.printStackTrace();    // if exception is thrown, print stack trace
+        }
     }
 
     public static void main(String[] args){
