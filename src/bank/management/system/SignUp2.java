@@ -1,5 +1,7 @@
 package bank.management.system;
 
+import java.sql.*;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -256,7 +258,62 @@ public class SignUp2 extends JFrame implements ActionListener{
     @Override
     // next button is clicked
     public void actionPerformed(ActionEvent e){
+        // get user information
+        String age = ageText.getText(); // get age
+        String homePhone = homePhoneText.getText(); // get home phone number
+        String workPhone = workPhoneText.getText(); // get work phone number
+        String ethnicity = (String) ethnicityCombo.getSelectedItem();   // get ethnicity
+        String education = (String) educationCombo.getSelectedItem();   // get education
+        String occupation = (String) occupationCombo.getSelectedItem(); // get occupation
+        String income = (String) incomeCombo.getSelectedItem(); // get income
         
+        // determine if user is a senior citizen or not
+        String snrCit = "";
+        if(isSnrCitButton.isSelected()) snrCit = "Yes"; // is senior citizen
+        else if(notSnrCitButton.isSelected()) snrCit = "No";    // is not senior citizen
+
+        // determine if user has an existing account 
+        String hasAcct = "";
+        if(hasAcctButton.isSelected()) hasAcct = "Yes"; // has an existing account
+        else if(noAcctButton.isSelected()) hasAcct = "No";  // does not have an existing account
+
+        try{
+            // if all fields are filled, update the database
+            if(!age.equals("") && !homePhone.equals("") && !workPhone.equals("" ) 
+               && !ethnicity.equals("") && !education.equals("") && !occupation.equals("") 
+               && !income.equals("") && !snrCit.equals("") && !hasAcct.equals("")){
+                
+                Connect con1 = new Connect();   // create a Connect object
+                Connection conn = con1.getConnection(); // get the connection from the Connect class
+
+                String query = "INSERT INTO SignUpTwo (Form_No, Age, Home_Phone, Work_Phone, Ethnicity, Education, Occupation, Income, Senior_Citizen, Existing_Account) "
+                           + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";   // String that will be used to update database
+                
+                PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
+
+                // set the parameters for the query
+                preparedStatement.setString(1, formNo);
+                preparedStatement.setString(2, age);
+                preparedStatement.setString(3, homePhone);
+                preparedStatement.setString(4, workPhone);
+                preparedStatement.setString(5, ethnicity);
+                preparedStatement.setString(6, education);
+                preparedStatement.setString(7, occupation);
+                preparedStatement.setString(8, income);
+                preparedStatement.setString(9, snrCit);
+                preparedStatement.setString(10, hasAcct);
+
+                preparedStatement.executeUpdate();    // update database
+
+                new SignUp3(formNo);  // go to next page in sign up process
+                setVisible(false);  // make this frame invisible (this page dissappears)
+            } 
+            else JOptionPane.showMessageDialog(null, "Fill in all fields"); // display message if all fields are not filled
+        }
+        catch(Exception E){
+            E.printStackTrace();    // if exception is thrown, print stack trace
+        }
+
     }
 
     public static void main(String[] args){
