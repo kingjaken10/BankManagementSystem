@@ -334,6 +334,8 @@ public class SignUp3 extends JFrame implements ActionListener{
 
                     // database updated successfully
                     JOptionPane.showMessageDialog(null, "Card Number: " + cardNo + "\nPin: " + pin);   // display card number and pin
+                    
+                    new Deposit(pin);   // open deposit window
 
                     setVisible(false);  // make this frame invisible (this page dissappears)
                 }
