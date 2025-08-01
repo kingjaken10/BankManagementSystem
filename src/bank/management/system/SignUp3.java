@@ -1,10 +1,12 @@
 package bank.management.system;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
  
-public class SignUp3 extends JFrame{
+public class SignUp3 extends JFrame implements ActionListener{
 
     // components to be placed on window
     JRadioButton savingAcctButton, currAcctButton, fixedDepAcctButton, recurDepAcctButton;  // radio buttons
@@ -227,6 +229,7 @@ public class SignUp3 extends JFrame{
         submitButton.setBounds(300, 720, 100, 30); // set bounds
         submitButton.setBackground(Color.BLACK);  // set button color to black
         submitButton.setForeground(Color.WHITE);  // set text color to white
+        submitButton.addActionListener(this);   // add ActionListener
         add(submitButton);    // submit next button to window
 
         // add cancel button
@@ -235,9 +238,15 @@ public class SignUp3 extends JFrame{
         cancelButton.setBounds(450, 720, 100, 30); // set bounds
         cancelButton.setBackground(Color.BLACK);  // set button color to black
         cancelButton.setForeground(Color.WHITE);  // set text color to white
+        cancelButton.addActionListener(this);   // add ActionListener
         add(cancelButton);    // add cancel button to window
 
         setVisible(true);   // make window visible
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+
     }
 
     public static void main(String[] args){
