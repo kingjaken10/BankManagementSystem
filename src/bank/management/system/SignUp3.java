@@ -1,7 +1,11 @@
 package bank.management.system;
 
+import java.util.Random;
+import java.sql.*;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
@@ -9,12 +13,23 @@ import javax.swing.*;
 public class SignUp3 extends JFrame implements ActionListener{
 
     // components to be placed on window
-    JRadioButton savingAcctButton, currAcctButton, fixedDepAcctButton, recurDepAcctButton;  // radio buttons
-    JCheckBox atmCheckBox, mobileCheckBox, checkBookCheckBox, internetCheckBox, emailCheckBox, eStatementCheckBox; // checkboxes
+    JRadioButton savingAcctButton, checkingAcctButton, fixedDepAcctButton, recurDepAcctButton;  // radio buttons
+    JCheckBox atmCheckBox, mobileCheckBox, checkBookCheckBox, internetCheckBox, emailCheckBox, eStatementCheckBox, acknowledgmentStatementCheckBox; // checkboxes
     JButton submitButton, cancelButton; // buttons
 
     String formNo; // String to store form number
 
+    Random ran = new Random();  // create a Random object to generate random numbers for card number and pin
+    
+    // generate random card number
+    int first8 = ran.nextInt(90000000) + 10000000;  // generate a random 8 digit number
+    int last8 = ran.nextInt(90000000) + 10000000;   // generate another random 8 digit number
+    String cardNo = Integer.toString(first8) + Integer.toString(last8); // combine the two randomly generated numbers to create a 16 digit card number
+
+    // generate random pin
+    int fourDigitNum = ran.nextInt(9000) + 1000;   // generate a random 4 digit number
+    String pin = Integer.toString(fourDigitNum);  // convert number to a String to use as pin
+    
     SignUp3(String formNo){
         super("APPLICATION FORM (CONTINUED"); // call parent constructor   
         
@@ -81,13 +96,13 @@ public class SignUp3 extends JFrame implements ActionListener{
         savingAcctButton.setBackground(new Color(215, 252, 252));    // set background color to same as window's
         add(savingAcctButton);   // add saving account radio button to window
 
-        // add current account radio button
-        currAcctButton = new JRadioButton("Current Account");   // create current account radio button
-        currAcctButton.setFont(new Font("Raleway", Font.BOLD, 14));    // set font
-        currAcctButton.setBounds(100, 250, 200, 30);   // set bounds
-        currAcctButton.setForeground(Color.BLACK); // set text color to black
-        currAcctButton.setBackground(new Color(215, 252, 252));    // set background color to same as window's
-        add(currAcctButton);   // add current account radio button to window
+        // add checking account radio button
+        checkingAcctButton = new JRadioButton("Checking Account");   // create checking account radio button
+        checkingAcctButton.setFont(new Font("Raleway", Font.BOLD, 14));    // set font
+        checkingAcctButton.setBounds(100, 250, 200, 30);   // set bounds
+        checkingAcctButton.setForeground(Color.BLACK); // set text color to black
+        checkingAcctButton.setBackground(new Color(215, 252, 252));    // set background color to same as window's
+        add(checkingAcctButton);   // add checking account radio button to window
         
         // add fixed deposit account radio button
         fixedDepAcctButton = new JRadioButton("Fixed Deposit Account");   // create fixed deposit account radio button
@@ -108,7 +123,7 @@ public class SignUp3 extends JFrame implements ActionListener{
         // group the radio buttons so only one of the four account types can be selected
         ButtonGroup buttonGroup = new ButtonGroup();    // create ButtonGroup object
         buttonGroup.add(savingAcctButton);    // add saving account radio button
-        buttonGroup.add(currAcctButton);  // add current account radio button
+        buttonGroup.add(checkingAcctButton);  // add checking account radio button
         buttonGroup.add(fixedDepAcctButton);    // add fixed deposit account radio button
         buttonGroup.add(recurDepAcctButton);  // add recurring deposit account radio button
 
@@ -125,8 +140,26 @@ public class SignUp3 extends JFrame implements ActionListener{
         cardNoLabel2.setForeground(Color.BLACK);    // set text color to black
         add(cardNoLabel2);  // add card number label to window
 
+        // get last 4 digits of card number
+        String fourDigit = "";  // stores the last four digits of the card number but in reverse order
+        int temp = last8;   // stores last half of card number
+
+        // get the last four digits of the card number but in reverse order and store in fourDigit
+        for(int i = 0; i < 4; i++){
+            int num = temp % 10;
+            temp /= 10;
+            fourDigit += Integer.toString(num);
+        }
+
+        String lastFourDigits = ""; // stores the last four digits of the card number in the correct order
+
+        // reverse the order of fourDigit to get the last four digits of the card number in the correct order and store in lastFourDigits
+        for(int i = 3; i >= 0; i--){
+            lastFourDigits += fourDigit.charAt(i);
+        }
+
         // add card number info labels
-        JLabel cardNoInfo1 = new JLabel("XXXX-XXXX-XXXX-4184" );   // create card number info label
+        JLabel cardNoInfo1 = new JLabel("XXXX-XXXX-XXXX-" + lastFourDigits);   // create card number info label
         cardNoInfo1.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
         cardNoInfo1.setBounds(350, 320, 300, 30);  // set bounds
         cardNoInfo1.setForeground(Color.BLACK);    // set text color to black
@@ -183,7 +216,7 @@ public class SignUp3 extends JFrame implements ActionListener{
         add(mobileCheckBox);   // add mobile banking checkbox to window
 
         // add checkbook checkbox
-        checkBookCheckBox = new JCheckBox("Check Book");    // create checkbook checkbox
+        checkBookCheckBox = new JCheckBox("Checkbook");    // create checkbook checkbox
         checkBookCheckBox.setFont(new Font("Raleway", Font.BOLD, 14));    // set font
         checkBookCheckBox.setBounds(100, 595, 200, 30);   // set bounds
         checkBookCheckBox.setForeground(Color.BLACK); // set text color to black
@@ -215,7 +248,7 @@ public class SignUp3 extends JFrame implements ActionListener{
         add(eStatementCheckBox);   // add e-statement checkbox to window
 
         // add acknowledgment statement checkbox
-        JCheckBox acknowledgmentStatementCheckBox = new JCheckBox("I hereby acknowledge that the information entered "
+        acknowledgmentStatementCheckBox = new JCheckBox("I hereby acknowledge that the information entered "
                                                            + "is correct to the best of my knowledge."); // create acknowledgment statement checkbox
         acknowledgmentStatementCheckBox.setFont(new Font("Raleway", Font.BOLD, 12));    // set font
         acknowledgmentStatementCheckBox.setBounds(100, 670, 700, 30);   // set bounds
@@ -245,8 +278,74 @@ public class SignUp3 extends JFrame implements ActionListener{
     }
 
     @Override
+    // clicked submit or cancel buttons
     public void actionPerformed(ActionEvent e){
+        // get user information
+        // get account type
+        String acctType = "";
+        if(savingAcctButton.isSelected()) acctType = "Saving Account";  // account is a saving account
+        else if(checkingAcctButton.isSelected()) acctType = "Checking Account";  // account is a checking account
+        else if(fixedDepAcctButton.isSelected()) acctType = "Fixed Deposit Account";    // account is a fixed deposit account
+        else if(recurDepAcctButton.isSelected()) acctType = "Recurring Deposit Account";    // account is a recurring deposit account
 
+        // get services/facilities selected
+        String services = "";
+        if(atmCheckBox.isSelected()) services += "ATM Card ";   // ATM card selected
+        else if(mobileCheckBox.isSelected()) services += "Mobile Banking "; // mobile banking selected
+        else if(checkBookCheckBox.isSelected()) services += "Checkbook ";   // checkbook selected
+        else if(internetCheckBox.isSelected()) services += "Internet Banking "; // internet banking selected
+        else if(emailCheckBox.isSelected()) services += "Email Alerts ";    // email alerts selected
+        else if(eStatementCheckBox.isSelected()) services += "E-Statements";    // e-statements selected
+
+        try{
+            // submit button clicked
+            if(e.getSource() == submitButton){
+                // if all required fields are filled, update database
+                if(!acctType.equals("") && acknowledgmentStatementCheckBox.isSelected()){
+                    Connect con1 = new Connect();   // create a Connect object
+                    Connection conn = con1.getConnection(); // get the connection from the Connect class
+
+                    // querys
+                    String query1 = "INSERT INTO SignUpThree (Form_No, Account_Type, Card_No, Pin, Facility) " 
+                                    + " VALUES (?, ?, ?, ?, ?)"; // String that will be used to update database
+                    String query2 = "INSERT INTO Login (Form_No, Card_No, Pin) " 
+                                    + " VALUES (?, ?, ?)"; // String that will be used to update database;
+
+                    // handle query1
+                    PreparedStatement preparedStatement = conn.prepareStatement(query1); // prepare the SQL query for execution
+
+                    // set the parameters for the query
+                    preparedStatement.setString(1, formNo);
+                    preparedStatement.setString(2, acctType);
+                    preparedStatement.setString(3, cardNo);
+                    preparedStatement.setString(4, pin);
+                    preparedStatement.setString(5, services);
+
+                    preparedStatement.executeUpdate();  // update database
+
+                    // handle query2
+                    preparedStatement = conn.prepareStatement(query2); // prepare the SQL query for execution
+
+                    // set the parameters for the query
+                    preparedStatement.setString(1, formNo);
+                    preparedStatement.setString(2, cardNo);
+                    preparedStatement.setString(3, pin);
+
+                    preparedStatement.executeUpdate();  // update database
+
+                    // database updated successfully
+                    JOptionPane.showMessageDialog(null, "Card Number: " + cardNo + "\nPin: " + pin);   // display card number and pin
+
+                    setVisible(false);  // make this frame invisible (this page dissappears)
+                }
+                else JOptionPane.showMessageDialog(null, "Fill in all fields"); // display message if all fields are not filled
+            }
+            // cancel button clicked
+            else if(e.getSource() == cancelButton) System.exit(0);  // close everything
+        }
+        catch(Exception E){
+            E.printStackTrace();    // if exception is thrown, print stack trace
+        }
     }
 
     public static void main(String[] args){
