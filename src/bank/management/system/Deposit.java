@@ -1,10 +1,12 @@
 package bank.management.system;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-public class Deposit extends JFrame{
+public class Deposit extends JFrame implements ActionListener{
     
     // components to be placed on window
     JTextField depositAmtText;   // deposit amount text field
@@ -55,6 +57,7 @@ public class Deposit extends JFrame{
         depositButton.setBounds(710, 364, 130, 34);    // set bounds
         depositButton.setForeground(Color.WHITE);  // set text color to white
         depositButton.setBackground(new Color(65, 125, 128));  // set background color
+        depositButton.addActionListener(this);  // add ActionListener
         atmImage.add(depositButton);   // add deposit button on ATM image
 
         // add back button
@@ -62,10 +65,16 @@ public class Deposit extends JFrame{
         backButton.setBounds(710, 410, 130, 34);    // set bounds
         backButton.setForeground(Color.WHITE);  // set text color to white
         backButton.setBackground(new Color(65, 125, 128));  // set background color
+        backButton.addActionListener(this);  // add ActionListener
         atmImage.add(backButton);   // add back button on ATM image
 
-
         setVisible(true);  // make window visible
+    }
+
+    @Override
+    // clicked deposit or back buttons 
+    public void actionPerformed(ActionEvent e){
+        
     }
 
     public static void main(String[] args) {
