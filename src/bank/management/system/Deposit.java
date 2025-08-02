@@ -95,27 +95,30 @@ public class Deposit extends JFrame implements ActionListener{
                         Connection conn = con1.getConnection(); // get the connection from the Connect class
 
                         String query = "INSERT INTO Bank (Pin, Date, Type, Amount) " 
-                                       + "VALUES (?, '"+date+"', ?, ?)"; // String that will be used to update database;
+                                       + "VALUES (?, '"+date+"', ?, ?)"; // query with placeholders
 
                         PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
 
                         // set the parameters for the query
-                        preparedStatement.setString(1, pin);
-                        preparedStatement.setString(2, "Deposit");
-                        preparedStatement.setString(3, amount);
+                        preparedStatement.setString(1, pin);    // set pin at position 1
+                        preparedStatement.setString(2, "Deposit");  // set type of action (Deposit) at position 2
+                        preparedStatement.setString(3, amount); // set deposit amount at position 3 
 
-                        preparedStatement.executeUpdate();  // update database
+                        preparedStatement.executeUpdate();  // execute the prepared query and update database
 
                         // database updated successfully
                         JOptionPane.showMessageDialog(null, "$" + amount + " Deposited Successfully");   // display message that deposit was successful
-                        
-                        setVisible(false);  // make this frame invisible (this page dissappears)
+                        new main_Class(pin);    // open transaction window
+                        setVisible(false);  // make this window invisible
                     }
                     else return;    // deposit amount was not a numerical value
                 }
             }
             // back button clicked
-            else if(e.getSource() == backButton) System.exit(0);  // close everything
+            else if(e.getSource() == backButton){
+                new main_Class(pin);    // open transaction window
+                setVisible(false);  // make this window invisible
+            }
         }
         catch(Exception E){
             E.printStackTrace();    // if exception is thrown, print stack trace
