@@ -1,10 +1,12 @@
 package bank.management.system;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-public class main_Class extends JFrame{
+public class main_Class extends JFrame implements ActionListener{
 
     // components to be placed on window 
     JButton depositButton, fastCashButton, pinChangeButton, withdrawalButton, miniStmtButton, balanceButton, exitButton;   // buttons
@@ -40,6 +42,7 @@ public class main_Class extends JFrame{
         depositButton.setBounds(415, 270, 150, 34);    // set bounds
         depositButton.setForeground(Color.WHITE);  // set text color to white
         depositButton.setBackground(new Color(65, 125, 128));  // set background color
+        depositButton.addActionListener(this);  // add ActionListener
         atmImage.add(depositButton);   // add deposit button on ATM image
 
         // add fast cash button
@@ -47,6 +50,7 @@ public class main_Class extends JFrame{
         fastCashButton.setBounds(415, 316, 150, 34);    // set bounds
         fastCashButton.setForeground(Color.WHITE);  // set text color to white
         fastCashButton.setBackground(new Color(65, 125, 128));  // set background color
+        fastCashButton.addActionListener(this);  // add ActionListener
         atmImage.add(fastCashButton);   // add fast cash button on ATM image
         
         // add pin change button
@@ -54,6 +58,7 @@ public class main_Class extends JFrame{
         pinChangeButton.setBounds(415, 363, 150, 34);    // set bounds
         pinChangeButton.setForeground(Color.WHITE);  // set text color to white
         pinChangeButton.setBackground(new Color(65, 125, 128));  // set background color
+        pinChangeButton.addActionListener(this);  // add ActionListener
         atmImage.add(pinChangeButton);   // add pin change button on ATM image
         
         // add cash withdrawal button
@@ -61,6 +66,7 @@ public class main_Class extends JFrame{
         withdrawalButton.setBounds(690, 271, 150, 34);    // set bounds
         withdrawalButton.setForeground(Color.WHITE);  // set text color to white
         withdrawalButton.setBackground(new Color(65, 125, 128));  // set background color
+        withdrawalButton.addActionListener(this);  // add ActionListener
         atmImage.add(withdrawalButton);   // add cash withdrawal button on ATM image
 
         // add mini statement button
@@ -68,6 +74,7 @@ public class main_Class extends JFrame{
         miniStmtButton.setBounds(690, 317, 150, 34);    // set bounds
         miniStmtButton.setForeground(Color.WHITE);  // set text color to white
         miniStmtButton.setBackground(new Color(65, 125, 128));  // set background color
+        miniStmtButton.addActionListener(this);  // add ActionListener
         atmImage.add(miniStmtButton);   // add mini statement button on ATM image
 
         // add balance inquiry button
@@ -75,6 +82,7 @@ public class main_Class extends JFrame{
         balanceButton.setBounds(690, 364, 150, 34);    // set bounds
         balanceButton.setForeground(Color.WHITE);  // set text color to white
         balanceButton.setBackground(new Color(65, 125, 128));  // set background color
+        balanceButton.addActionListener(this);  // add ActionListener
         atmImage.add(balanceButton);   // add balance inquiry button on ATM image
 
         // add exit button
@@ -82,9 +90,16 @@ public class main_Class extends JFrame{
         exitButton.setBounds(690, 410, 150, 34);    // set bounds
         exitButton.setForeground(Color.WHITE);  // set text color to white
         exitButton.setBackground(new Color(65, 125, 128));  // set background color
+        exitButton.addActionListener(this);  // add ActionListener
         atmImage.add(exitButton);   // add exit button on ATM image
 
         setVisible(true);   // make window visible
+    }
+
+    @Override
+    // clicked a button
+    public void actionPerformed(ActionEvent e){
+
     }
 
     public static void main(String[] args) {
