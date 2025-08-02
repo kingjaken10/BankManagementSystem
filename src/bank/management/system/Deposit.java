@@ -15,7 +15,7 @@ public class Deposit extends JFrame implements ActionListener{
     JTextField depositAmtText;   // deposit amount text field
     JButton depositButton, backButton;  // deposit and back buttons 
 
-    String  pin;    // stores pin number
+    String pin;    // stores pin number
 
     Deposit(String pin){
         super("Deposit");   // call parent constructor 
@@ -31,10 +31,10 @@ public class Deposit extends JFrame implements ActionListener{
 
         // set background image of window (ATM image)
         ImageIcon atm1 =  new ImageIcon(ClassLoader.getSystemResource("icons/atm2.png"));   // load the image
-        Image atm2 = atm1.getImage().getScaledInstance(1545, 830, Image.SCALE_DEFAULT);    // resize the image
+        Image atm2 = atm1.getImage().getScaledInstance(1545, 835, Image.SCALE_DEFAULT);    // resize the image
         ImageIcon atm3 = new ImageIcon(atm2);   // create a new ImageIcon to store the resized image
         JLabel atmImage = new JLabel(atm3); // add image to a label
-        atmImage.setBounds(0, 0, 1545, 830);   // resize and position the label
+        atmImage.setBounds(0, 0, 1545, 835);   // resize and position the label
         add(atmImage);  // add image to window
 
         // add labels and respective components to window
@@ -57,7 +57,7 @@ public class Deposit extends JFrame implements ActionListener{
 
         // add deposit button
         depositButton = new JButton("DEPOSIT"); // create deposit button
-        depositButton.setBounds(710, 364, 130, 34);    // set bounds
+        depositButton.setBounds(710, 366, 130, 34);    // set bounds
         depositButton.setForeground(Color.WHITE);  // set text color to white
         depositButton.setBackground(new Color(65, 125, 128));  // set background color
         depositButton.addActionListener(this);  // add ActionListener
@@ -65,7 +65,7 @@ public class Deposit extends JFrame implements ActionListener{
 
         // add back button
         backButton = new JButton("BACK"); // create back button
-        backButton.setBounds(710, 410, 130, 34);    // set bounds
+        backButton.setBounds(710, 413, 130, 34);    // set bounds
         backButton.setForeground(Color.WHITE);  // set text color to white
         backButton.setBackground(new Color(65, 125, 128));  // set background color
         backButton.addActionListener(this);  // add ActionListener
