@@ -307,31 +307,30 @@ public class SignUp extends JFrame implements ActionListener{
                 Connect con1 = new Connect();   // create a Connect object
                 Connection conn = con1.getConnection(); // get the connection from the Connect class
 
-                // String q = "insert into SignUp values('"+formNo+"', '"+firstName+"', '"+lastName+"', '"+dob+"', '"+gender+"', '"+phone+"', '"+email+"', '"+maritalStatus+"', '"+address+"', '"+city+"', '"+state+"', '"+zipCode+"')";
-                
                 String query = "INSERT INTO SignUp (Form_No, First_Name, Last_Name, DOB, Gender, Phone_Number, Email_Address, Marital_Status, Address, City, State, Zip_Code) "
-                           + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";   // String that will be used to update database
+                           + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";   // query with placeholders
                 
                 PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
 
                 // set the parameters for the query
-                preparedStatement.setString(1, formNo);
-                preparedStatement.setString(2, firstName);
-                preparedStatement.setString(3, lastName);
-                preparedStatement.setString(4, dob);
-                preparedStatement.setString(5, gender);
-                preparedStatement.setString(6, phone);
-                preparedStatement.setString(7, email);
-                preparedStatement.setString(8, maritalStatus);
-                preparedStatement.setString(9, address);
-                preparedStatement.setString(10, city);
-                preparedStatement.setString(11, state);
-                preparedStatement.setString(12, zipCode);
+                preparedStatement.setString(1, formNo); // set form number at position 1
+                preparedStatement.setString(2, firstName);  // set first name at position 2
+                preparedStatement.setString(3, lastName);   // set last name at position 3
+                preparedStatement.setString(4, dob);    // set DOB at position 4
+                preparedStatement.setString(5, gender); // set gender at position 5
+                preparedStatement.setString(6, phone);  // set phone number at position 6
+                preparedStatement.setString(7, email);  // set email address at position 7
+                preparedStatement.setString(8, maritalStatus);  // set marital status at position 8
+                preparedStatement.setString(9, address);    // set address at position 9
+                preparedStatement.setString(10, city);  // set city at position 10
+                preparedStatement.setString(11, state); // set state at position 11
+                preparedStatement.setString(12, zipCode);   // set zip code at position 12
 
-                preparedStatement.executeUpdate();    // update database
+                preparedStatement.executeUpdate();    // execute the prepared query and update database
 
-                new SignUp2(formNo);  // go to next page in sign up process
-                setVisible(false);  // make this frame invisible (this page dissappears)
+                // database updated successfully
+                new SignUp2(formNo);  // go to page 2 of sign up process
+                setVisible(false);  // make this window invisible
             }
             else JOptionPane.showMessageDialog(null, "Fill in all fields"); // display message if all fields are not filled
         }
