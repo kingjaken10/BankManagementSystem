@@ -289,12 +289,12 @@ public class SignUp3 extends JFrame implements ActionListener{
 
         // get services/facilities selected
         String services = "";
-        if(atmCheckBox.isSelected()) services += "ATM Card ";   // ATM card selected
-        else if(mobileCheckBox.isSelected()) services += "Mobile Banking "; // mobile banking selected
-        else if(checkBookCheckBox.isSelected()) services += "Checkbook ";   // checkbook selected
-        else if(internetCheckBox.isSelected()) services += "Internet Banking "; // internet banking selected
-        else if(emailCheckBox.isSelected()) services += "Email Alerts ";    // email alerts selected
-        else if(eStatementCheckBox.isSelected()) services += "E-Statements";    // e-statements selected
+        if(atmCheckBox.isSelected()) services += "ATM Card   ";   // ATM card selected
+        if(mobileCheckBox.isSelected()) services += "Mobile Banking   "; // mobile banking selected
+        if(checkBookCheckBox.isSelected()) services += "Checkbook   ";   // checkbook selected
+        if(internetCheckBox.isSelected()) services += "Internet Banking   "; // internet banking selected
+        if(emailCheckBox.isSelected()) services += "Email Alerts   ";    // email alerts selected
+        if(eStatementCheckBox.isSelected()) services += "E-Statements";    // e-statements selected
 
         try{
             // submit button clicked
@@ -337,7 +337,7 @@ public class SignUp3 extends JFrame implements ActionListener{
                     
                     new Deposit(pin);   // open deposit window
 
-                    setVisible(false);  // make this frame invisible (this page dissappears)
+                    setVisible(false);  // make this window invisible
                 }
                 else JOptionPane.showMessageDialog(null, "Fill in all fields"); // display message if all fields are not filled
             }
