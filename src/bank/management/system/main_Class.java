@@ -11,9 +11,13 @@ public class main_Class extends JFrame implements ActionListener{
     // components to be placed on window 
     JButton depositButton, fastCashButton, pinChangeButton, withdrawalButton, miniStmtButton, balanceButton, exitButton;   // buttons
 
-    main_Class(){
+    String pin; // stores pin number
+
+    main_Class(String pin){
         super("Transaction");   // call parent constructor 
         
+        this.pin = pin; // store pin
+
         // set up window
         setLayout(null);
         setSize(1545, 1000);  // set window size
@@ -99,10 +103,38 @@ public class main_Class extends JFrame implements ActionListener{
     @Override
     // clicked a button
     public void actionPerformed(ActionEvent e){
+        // clicked deposit button
+        if(e.getSource() == depositButton){
+            new Deposit(pin);   // open deposit window
+            setVisible(false);  // make window invisible
+        }
+        // clicked fast cash button
+        else if(e.getSource() == fastCashButton){
 
+        }
+        // clicked pin change button
+        else if(e.getSource() == pinChangeButton){
+
+        }
+        // clicked cash withdrawal button
+        else if(e.getSource() == withdrawalButton){
+
+        }
+        // clicked mini statement button
+        else if(e.getSource() == miniStmtButton){
+
+        }
+        // clicked balance inquiry button
+        else if(e.getSource() == balanceButton){
+
+        }
+        // clicked exit button
+        else if(e.getSource() == exitButton){
+
+        }
     }
 
     public static void main(String[] args) {
-        new main_Class();
+        new main_Class("");
     }
 }
