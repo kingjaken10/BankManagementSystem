@@ -158,11 +158,12 @@ public class Login extends JFrame implements ActionListener{
             }
             // sign up button clicked
             else if(e.getSource() ==  signUpButton){
-
+                new SignUp();   // go to page 1 of sign up process
+                setVisible(false);  // make this window invisible
             }
         } 
         catch(Exception E){
-            E.printStackTrace();    // if exception is caught, print stack trace
+            E.printStackTrace();    // if exception is thrown, print stack trace
         }
     }
 
