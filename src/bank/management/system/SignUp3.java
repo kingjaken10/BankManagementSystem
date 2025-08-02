@@ -304,23 +304,23 @@ public class SignUp3 extends JFrame implements ActionListener{
                     Connect con1 = new Connect();   // create a Connect object
                     Connection conn = con1.getConnection(); // get the connection from the Connect class
 
-                    // querys
+                    // queries
                     String query1 = "INSERT INTO SignUpThree (Form_No, Account_Type, Card_No, Pin, Facility) " 
-                                    + " VALUES (?, ?, ?, ?, ?)"; // String that will be used to update database
+                                    + " VALUES (?, ?, ?, ?, ?)"; // query with placeholders
                     String query2 = "INSERT INTO Login (Form_No, Card_No, Pin) " 
-                                    + " VALUES (?, ?, ?)"; // String that will be used to update database;
+                                    + " VALUES (?, ?, ?)"; // query with placeholders
 
                     // handle query1
                     PreparedStatement preparedStatement = conn.prepareStatement(query1); // prepare the SQL query for execution
 
                     // set the parameters for the query
-                    preparedStatement.setString(1, formNo);
-                    preparedStatement.setString(2, acctType);
-                    preparedStatement.setString(3, cardNo);
-                    preparedStatement.setString(4, pin);
-                    preparedStatement.setString(5, services);
+                    preparedStatement.setString(1, formNo); // set form number at position 1
+                    preparedStatement.setString(2, acctType);   // set account type at position 2
+                    preparedStatement.setString(3, cardNo); // set card number at position 3
+                    preparedStatement.setString(4, pin);    // set pin at position 4
+                    preparedStatement.setString(5, services);   // set services at position  5
 
-                    preparedStatement.executeUpdate();  // update database
+                    preparedStatement.executeUpdate();  // execute the prepared query and update database
 
                     // handle query2
                     preparedStatement = conn.prepareStatement(query2); // prepare the SQL query for execution
@@ -334,9 +334,7 @@ public class SignUp3 extends JFrame implements ActionListener{
 
                     // database updated successfully
                     JOptionPane.showMessageDialog(null, "Card Number: " + cardNo + "\nPin: " + pin);   // display card number and pin
-                    
                     new Deposit(pin);   // open deposit window
-
                     setVisible(false);  // make this window invisible
                 }
                 else JOptionPane.showMessageDialog(null, "Fill in all fields"); // display message if all fields are not filled
