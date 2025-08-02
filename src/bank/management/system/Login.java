@@ -1,5 +1,7 @@
 package bank.management.system;
 
+import java.sql.*;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,6 +30,7 @@ public class Login extends JFrame implements ActionListener{
         setLayout(null);
         setSize(850, 480);  // set window size
         setLocationRelativeTo(null); // center align window
+        setUndecorated(true);   // hides window border
         setResizable(false); // fix size of window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set default close operation
 
@@ -39,14 +42,6 @@ public class Login extends JFrame implements ActionListener{
         JLabel bankImage = new JLabel(bank3);   // add image to a label
         bankImage.setBounds(370, 10, 100, 100); // resize and position the label
         add(bankImage); // add label to window
-
-        // add card icon to window
-        // ImageIcon card1 = new ImageIcon(ClassLoader.getSystemResource("icons/card.png"));   // load the image
-        // Image card2 = card1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);    // resize the image
-        // ImageIcon card3 = new ImageIcon(card2); // create a new ImageIcon to store the resized image
-        // JLabel cardImage = new JLabel(card3);   // add image to a label
-        // cardImage.setBounds(700, 345, 100, 100);    // resize and position the label
-        // add(cardImage); // add label to window
 
         // add labels and respective text fields to window
         // add welcome label
@@ -149,7 +144,30 @@ public class Login extends JFrame implements ActionListener{
         try{
             // sign in button clicked
             if(e.getSource() == signInButton){
+                Connect c = new Connect();  // create a Connect object
+                Connection con = c.getConnection(); // get the connection from the Connect class
 
+                String cardNo = cardNoText.getText();   // get card number
+                char[] pinChar = pinField.getPassword();    // get pin as char array
+                String pin = new String(pinChar);   // convert pin to String
+
+                String query = "select * from Login where Card_No = ? and Pin = ?"; // query with placeholders
+                PreparedStatement preparedStatement = con.prepareStatement(query);  // prepare the SQL query for execution
+
+                // set the parameters for the query
+                preparedStatement.setString(1, cardNo); // set card number at position 1
+                preparedStatement.setString(2, pin);    // set pin at position 2
+
+                // execute the query and check if a matching record exists
+                ResultSet resultSet = preparedStatement.executeQuery(); // execute the prepared query
+
+                // check if user exists (has existing card number and pin)
+                if(resultSet.next()){
+                    new main_Class(pin);    // open transaction window
+                    setVisible(false);  // make this window invisible
+                }
+                // card number/pin does not exist
+                else JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN.", "Error", JOptionPane.ERROR_MESSAGE); // display error message
             }
             // clear button clicked
             else if(e.getSource() == clearButton){
