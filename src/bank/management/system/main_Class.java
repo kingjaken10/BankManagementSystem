@@ -129,9 +129,7 @@ public class main_Class extends JFrame implements ActionListener{
 
         }
         // clicked exit button
-        else if(e.getSource() == exitButton){
-
-        }
+        else if(e.getSource() == exitButton) System.exit(0);    // close everything
     }
 
     public static void main(String[] args) {
