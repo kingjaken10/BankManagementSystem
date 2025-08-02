@@ -1,5 +1,8 @@
 package bank.management.system;
 
+import java.util.Date;
+import java.sql.*;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -74,10 +77,67 @@ public class Deposit extends JFrame implements ActionListener{
     @Override
     // clicked deposit or back buttons 
     public void actionPerformed(ActionEvent e){
-        
+        try{
+            String amount = depositAmtText.getText();   // get deposit amount
+
+            // deposit button clicked
+            if(e.getSource() == depositButton){
+                
+                // no deposit amount inputted
+                if(amount.equals("")) JOptionPane.showMessageDialog(null, "Please enter the amount you want to deposit");   // display message to enter deposit amount
+                // deposit amount inputted
+                else{
+                    // check if deposit amount is a numerical value
+                    if(isNumerical(amount)){
+                        Date date = new Date();   // get current timestamp (date and time)
+
+                        Connect con1 = new Connect();   // create a Connect object
+                        Connection conn = con1.getConnection(); // get the connection from the Connect class
+
+                        String query = "INSERT INTO Bank (Pin, Date, Type, Amount) " 
+                                       + "VALUES (?, '"+date+"', ?, ?)"; // String that will be used to update database;
+
+                        PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
+
+                        // set the parameters for the query
+                        preparedStatement.setString(1, pin);
+                        preparedStatement.setString(2, "Deposit");
+                        preparedStatement.setString(3, amount);
+
+                        preparedStatement.executeUpdate();  // update database
+
+                        // database updated successfully
+                        JOptionPane.showMessageDialog(null, "$" + amount + " Deposited Successfully");   // display message that deposit was successful
+                        
+                        setVisible(false);  // make this frame invisible (this page dissappears)
+                    }
+                    else return;    // deposit amount was not a numerical value
+                }
+            }
+            // back button clicked
+            else if(e.getSource() == backButton) System.exit(0);  // close everything
+        }
+        catch(Exception E){
+            E.printStackTrace();    // if exception is thrown, print stack trace
+        }
+    }
+
+    public boolean isNumerical(String amount){
+        boolean isNumerical = false;    // stores whether deposit amount is a numerical value or not
+
+        // check if deposit amount is a numerical value
+        try{
+            Integer.parseInt(amount);   // throws an exception if amount is not a numerical value
+            isNumerical = true; // deposit amount is a numerical value
+        }
+        catch(Exception E){
+            JOptionPane.showMessageDialog(null, "Please enter a numerical value for the deposit amount");   // display message to enter a numerical deposit amount
+        }
+
+        return isNumerical; // return whether deposit amount is a numerical value or not
     }
 
     public static void main(String[] args) {
-        new Deposit("null");
+        new Deposit("");
     }
 }
