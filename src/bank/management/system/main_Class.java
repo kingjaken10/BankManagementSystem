@@ -6,6 +6,9 @@ import javax.swing.*;
 
 public class main_Class extends JFrame{
 
+    // components to be placed on window 
+    JButton depositButton, fastCashButton, pinChangeButton, withdrawalButton, miniStmtButton, balanceButton, exitButton;   // buttons
+
     main_Class(){
         super("Transaction");   // call parent constructor 
         
@@ -23,6 +26,63 @@ public class main_Class extends JFrame{
         JLabel atmImage = new JLabel(atm3); // add image to a label
         atmImage.setBounds(0, 0, 1545, 830);   // resize and position the label
         add(atmImage);  // add image to window
+
+        // add labels and buttons to window
+        // add transaction prompt label
+        JLabel transactionLabel = new JLabel("PLEASE SELECT YOUR TRANSACTION");    // create transaction prompt label
+        transactionLabel.setFont(new Font("System", Font.BOLD, 22)); // set font
+        transactionLabel.setBounds(415, 180, 700, 35);   // set bounds
+        transactionLabel.setForeground(Color.WHITE); // set text color to white
+        atmImage.add(transactionLabel);  // add transaction prompt label on ATM image
+
+        // add deposit button
+        depositButton = new JButton("DEPOSIT"); // create deposit button
+        depositButton.setBounds(415, 270, 150, 34);    // set bounds
+        depositButton.setForeground(Color.WHITE);  // set text color to white
+        depositButton.setBackground(new Color(65, 125, 128));  // set background color
+        atmImage.add(depositButton);   // add deposit button on ATM image
+
+        // add fast cash button
+        fastCashButton = new JButton(" FAST CASH"); // create fast cash button
+        fastCashButton.setBounds(415, 316, 150, 34);    // set bounds
+        fastCashButton.setForeground(Color.WHITE);  // set text color to white
+        fastCashButton.setBackground(new Color(65, 125, 128));  // set background color
+        atmImage.add(fastCashButton);   // add fast cash button on ATM image
+        
+        // add pin change button
+        pinChangeButton = new JButton("PIN CHANGE"); // create pin change button
+        pinChangeButton.setBounds(415, 363, 150, 34);    // set bounds
+        pinChangeButton.setForeground(Color.WHITE);  // set text color to white
+        pinChangeButton.setBackground(new Color(65, 125, 128));  // set background color
+        atmImage.add(pinChangeButton);   // add pin change button on ATM image
+        
+        // add cash withdrawal button
+        withdrawalButton = new JButton("CASH WITHDRAWAL"); // create cash withdrawal button
+        withdrawalButton.setBounds(690, 271, 150, 34);    // set bounds
+        withdrawalButton.setForeground(Color.WHITE);  // set text color to white
+        withdrawalButton.setBackground(new Color(65, 125, 128));  // set background color
+        atmImage.add(withdrawalButton);   // add cash withdrawal button on ATM image
+
+        // add mini statement button
+        miniStmtButton = new JButton("MINI STATEMENT"); // create mini statement button
+        miniStmtButton.setBounds(690, 317, 150, 34);    // set bounds
+        miniStmtButton.setForeground(Color.WHITE);  // set text color to white
+        miniStmtButton.setBackground(new Color(65, 125, 128));  // set background color
+        atmImage.add(miniStmtButton);   // add mini statement button on ATM image
+
+        // add balance inquiry button
+        balanceButton = new JButton("BALANCE INQUIRY"); // create balance inquiry button
+        balanceButton.setBounds(690, 364, 150, 34);    // set bounds
+        balanceButton.setForeground(Color.WHITE);  // set text color to white
+        balanceButton.setBackground(new Color(65, 125, 128));  // set background color
+        atmImage.add(balanceButton);   // add balance inquiry button on ATM image
+
+        // add exit button
+        exitButton = new JButton("EXIT"); // create exit button
+        exitButton.setBounds(690, 410, 150, 34);    // set bounds
+        exitButton.setForeground(Color.WHITE);  // set text color to white
+        exitButton.setBackground(new Color(65, 125, 128));  // set background color
+        atmImage.add(exitButton);   // add exit button on ATM image
 
         setVisible(true);   // make window visible
     }
