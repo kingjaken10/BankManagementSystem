@@ -287,26 +287,27 @@ public class SignUp2 extends JFrame implements ActionListener{
                 Connection conn = con1.getConnection(); // get the connection from the Connect class
 
                 String query = "INSERT INTO SignUpTwo (Form_No, Age, Home_Phone, Work_Phone, Ethnicity, Education, Occupation, Income, Senior_Citizen, Existing_Account) "
-                           + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";   // String that will be used to update database
+                           + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";   // query with placeholders
                 
                 PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
 
                 // set the parameters for the query
-                preparedStatement.setString(1, formNo);
-                preparedStatement.setString(2, age);
-                preparedStatement.setString(3, homePhone);
-                preparedStatement.setString(4, workPhone);
-                preparedStatement.setString(5, ethnicity);
-                preparedStatement.setString(6, education);
-                preparedStatement.setString(7, occupation);
-                preparedStatement.setString(8, income);
-                preparedStatement.setString(9, snrCit);
-                preparedStatement.setString(10, hasAcct);
+                preparedStatement.setString(1, formNo); // set form number at position 1
+                preparedStatement.setString(2, age);    // set age at position 2
+                preparedStatement.setString(3, homePhone);  // set home phone number at position 3
+                preparedStatement.setString(4, workPhone);  // set work phone number at position 4
+                preparedStatement.setString(5, ethnicity);  // set ethnicity at position 5
+                preparedStatement.setString(6, education);  // set education at position 6
+                preparedStatement.setString(7, occupation); // set occupation at position 7 
+                preparedStatement.setString(8, income); // set income at position 8
+                preparedStatement.setString(9, snrCit); // set senior citizen status at position 9
+                preparedStatement.setString(10, hasAcct);   // set existing account status at position 10
 
-                preparedStatement.executeUpdate();    // update database
+                preparedStatement.executeUpdate();    // execute the prepared query and update database
 
-                new SignUp3(formNo);  // go to next page in sign up process
-                setVisible(false);  // make this frame invisible (this page dissappears)
+                // database updated successfully
+                new SignUp3(formNo);  // go to page 3 of sign up process
+                setVisible(false);  // make this window invisible
             } 
             else JOptionPane.showMessageDialog(null, "Fill in all fields"); // display message if all fields are not filled
         }
