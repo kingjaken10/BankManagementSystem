@@ -101,13 +101,15 @@ public class Deposit extends JFrame implements ActionListener{
 
                         // set the parameters for the query
                         preparedStatement.setString(1, pin);    // set pin at position 1
-                        preparedStatement.setString(2, "Deposit");  // set type of action (Deposit) at position 2
+                        preparedStatement.setString(2, "Deposit");  // set type of action (deposit) at position 2
                         preparedStatement.setString(3, amount); // set deposit amount at position 3 
 
                         preparedStatement.executeUpdate();  // execute the prepared query and update database
 
                         // database updated successfully
-                        JOptionPane.showMessageDialog(null, "$" + amount + " Deposited Successfully");   // display message that deposit was successful
+                        String formattedValue = String.format("%.2f", Double.parseDouble(amount));  // format deposit amount to 2 decimal places
+                        double balance = getBalance(conn);  // get user's balance
+                        JOptionPane.showMessageDialog(null, "$" + formattedValue + " Deposited Successfully \nCurrent Balance: $" + String.format("%.2f", balance));   // display message that deposit was successful
                         new main_Class(pin);    // open transaction window
                         setVisible(false);  // make this window invisible
                     }
@@ -130,7 +132,7 @@ public class Deposit extends JFrame implements ActionListener{
 
         // check if deposit amount is a numerical value
         try{
-            Integer.parseInt(amount);   // throws an exception if amount is not a numerical value
+            Double.parseDouble(amount);   // throws an exception if amount is not a numerical value
             isNumerical = true; // deposit amount is a numerical value
         }
         catch(Exception E){
@@ -138,6 +140,33 @@ public class Deposit extends JFrame implements ActionListener{
         }
 
         return isNumerical; // return whether deposit amount is a numerical value or not
+    }
+
+    public double getBalance(Connection conn){
+        double balance = 0.0;   // stores user's balance
+
+        try{
+            // determine user's balance based on pin
+            String query = "SELECT * FROM Bank WHERE Pin = ?"; // query with placeholder
+            
+            PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
+
+            // set the parameter for the query
+            preparedStatement.setString(1, pin);    // set pin at position 1
+
+            ResultSet resultSet = preparedStatement.executeQuery(); // execute the prepared query
+
+            while(resultSet.next()){
+                // has info in database
+                if(resultSet.getString("Type").equals("Deposit")) balance += Double.parseDouble(resultSet.getString("Amount")); // add to balance if entry is a deposit
+                else balance -= Double.parseDouble(resultSet.getString("Amount"));  // subtract from balance if entry is not a deposit
+            }
+        }
+        catch(Exception E){
+            E.printStackTrace();    // if exception is thrown, print stack trace
+        }
+
+        return balance; // return user's balance
     }
 
     public static void main(String[] args) {
