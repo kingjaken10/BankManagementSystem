@@ -118,7 +118,8 @@ public class main_Class extends JFrame implements ActionListener{
         }
         // clicked cash withdrawal button
         else if(e.getSource() == withdrawalButton){
-
+            new Withdrawal(pin);    // open withdrawal window
+            setVisible(false);  // make window invisible
         }
         // clicked mini statement button
         else if(e.getSource() == miniStmtButton){
