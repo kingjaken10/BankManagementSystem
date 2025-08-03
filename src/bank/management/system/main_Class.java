@@ -127,7 +127,8 @@ public class main_Class extends JFrame implements ActionListener{
         }
         // clicked balance inquiry button
         else if(e.getSource() == balanceButton){
-
+            new BalanceInquiry(pin);    // open balance inquiry window
+            setVisible(false);  // make window invisible
         }
         // clicked exit button
         else if(e.getSource() == exitButton) System.exit(0);    // close everything
