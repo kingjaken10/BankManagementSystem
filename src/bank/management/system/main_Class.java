@@ -50,7 +50,7 @@ public class main_Class extends JFrame implements ActionListener{
         atmImage.add(depositButton);   // add deposit button on ATM image
 
         // add fast cash button
-        fastCashButton = new JButton(" FAST CASH"); // create fast cash button
+        fastCashButton = new JButton("FAST CASH"); // create fast cash button
         fastCashButton.setBounds(415, 319, 150, 34);    // set bounds
         fastCashButton.setForeground(Color.WHITE);  // set text color to white
         fastCashButton.setBackground(new Color(65, 125, 128));  // set background color
@@ -106,11 +106,12 @@ public class main_Class extends JFrame implements ActionListener{
         // clicked deposit button
         if(e.getSource() == depositButton){
             new Deposit(pin);   // open deposit window
-            setVisible(false);  // make window invisible
+            setVisible(false);  // make this window invisible
         }
         // clicked fast cash button
         else if(e.getSource() == fastCashButton){
-
+            new FastCash(pin);  // open fast cash window
+            setVisible(false);  // make this window invisible
         }
         // clicked pin change button
         else if(e.getSource() == pinChangeButton){
@@ -119,7 +120,7 @@ public class main_Class extends JFrame implements ActionListener{
         // clicked cash withdrawal button
         else if(e.getSource() == withdrawalButton){
             new Withdrawal(pin);    // open withdrawal window
-            setVisible(false);  // make window invisible
+            setVisible(false);  // make this window invisible
         }
         // clicked mini statement button
         else if(e.getSource() == miniStmtButton){
@@ -128,7 +129,7 @@ public class main_Class extends JFrame implements ActionListener{
         // clicked balance inquiry button
         else if(e.getSource() == balanceButton){
             new BalanceInquiry(pin);    // open balance inquiry window
-            setVisible(false);  // make window invisible
+            setVisible(false);  // make this window invisible
         }
         // clicked exit button
         else if(e.getSource() == exitButton) System.exit(0);    // close everything
