@@ -151,7 +151,7 @@ public class Login extends JFrame implements ActionListener{
                 char[] pinChar = pinField.getPassword();    // get pin as char array
                 String pin = new String(pinChar);   // convert pin to String
 
-                String query = "select * from Login where Card_No = ? and Pin = ?"; // query with placeholders
+                String query = "SELECT * FROM Login WHERE Card_No = ? and Pin = ?"; // query with placeholders
                 PreparedStatement preparedStatement = con.prepareStatement(query);  // prepare the SQL query for execution
 
                 // set the parameters for the query
@@ -167,7 +167,7 @@ public class Login extends JFrame implements ActionListener{
                     setVisible(false);  // make this window invisible
                 }
                 // card number/pin does not exist
-                else JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN.", "Error", JOptionPane.ERROR_MESSAGE); // display error message
+                else JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN", "Error", JOptionPane.ERROR_MESSAGE); // display error message
             }
             // clear button clicked
             else if(e.getSource() == clearButton){
