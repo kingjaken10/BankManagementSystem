@@ -3,10 +3,12 @@ package bank.management.system;
 import java.sql.*;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 
-public class BalanceInquiry extends JFrame{
+public class BalanceInquiry extends JFrame implements ActionListener{
 
     // components to be placed on window
     JLabel balanceLabel;   // balance label
@@ -57,9 +59,17 @@ public class BalanceInquiry extends JFrame{
         backButton.setBounds(710, 413, 130, 34);    // set bounds
         backButton.setForeground(Color.WHITE);  // set text color to white
         backButton.setBackground(new Color(65, 125, 128));  // set background color
+        backButton.addActionListener(this);  // add ActionListener
         atmImage.add(backButton);   // add back button on ATM image
 
         setVisible(true);  // make window visible
+    }
+
+    @Override
+    // clicked back button
+    public void actionPerformed(ActionEvent e){
+        new main_Class(pin);    // open transaction window
+        setVisible(false);  // make this window invisible
     }
 
     public double getBalance(){
