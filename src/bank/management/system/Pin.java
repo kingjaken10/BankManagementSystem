@@ -1,12 +1,14 @@
 package bank.management.system;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-public class Pin extends JFrame{
+public class Pin extends JFrame implements ActionListener{
     
     // components to be placed on window
     JPasswordField pinPass, pinConfirmPass;   // new pin and pin confirmation password fields
@@ -84,6 +86,7 @@ public class Pin extends JFrame{
         changeButton.setBounds(710, 366, 130, 34);    // set bounds
         changeButton.setForeground(Color.WHITE);  // set text color to white
         changeButton.setBackground(new Color(65, 125, 128));  // set background color
+        changeButton.addActionListener(this);  // add ActionListener
         atmImage.add(changeButton);   // add change button on ATM image
 
         // add back button
@@ -91,9 +94,16 @@ public class Pin extends JFrame{
         backButton.setBounds(710, 413, 130, 34);    // set bounds
         backButton.setForeground(Color.WHITE);  // set text color to white
         backButton.setBackground(new Color(65, 125, 128));  // set background color
+        backButton.addActionListener(this);  // add ActionListener
         atmImage.add(backButton);   // add back button on ATM image
 
         setVisible(true);  // make window visible
+    }
+
+    @Override
+    // clicked change or back buttons
+    public void actionPerformed(ActionEvent e){
+        
     }
 
     public static void main(String[] args) {
