@@ -34,6 +34,7 @@ public class SignUp extends JFrame implements ActionListener{
         getContentPane().setBackground(new Color(188, 230, 250));    // set window background color
         setSize(850, 800);  // set window size
         setLocationRelativeTo(null);    // center align window
+        setUndecorated(true);   // hides window border
         setResizable(false); // fix size of window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set default close operation
         
@@ -47,57 +48,57 @@ public class SignUp extends JFrame implements ActionListener{
 
         // add labels and respective components to window
         // add application label
-        JLabel appLabel = new JLabel("APPLICATION FORM NO. " + formNo);   // create application label
-        appLabel.setFont(new Font("Raleway", Font.BOLD, 40));   // set font
+        JLabel appLabel = new JLabel("APPLICATION FORM NO." + formNo);   // create application label
+        appLabel.setFont(new Font("Monospaced", Font.BOLD, 40));   // set font
         appLabel.setBounds(160, 45, 600, 40);  // set bounds
         appLabel.setForeground(Color.BLACK);    // set text color to black
         add(appLabel);  // add application label to window
 
         // add page label
         JLabel pageLabel = new JLabel("Page 1");   // create page label
-        pageLabel.setFont(new Font("Raleway", Font.BOLD, 18));   // set font
+        pageLabel.setFont(new Font("Monospaced", Font.BOLD, 18));   // set font
         pageLabel.setBounds(400, 90, 600, 30);  // set bounds
         pageLabel.setForeground(Color.BLACK);    // set text color to black
         add(pageLabel);  // add page label to window
 
         // add page description label
         JLabel pageDescLabel = new JLabel("Personal Information");   // create page description label
-        pageDescLabel.setFont(new Font("Raleway", Font.BOLD, 18));   // set font
-        pageDescLabel.setBounds(335, 110, 600, 30);  // set bounds
+        pageDescLabel.setFont(new Font("Monospaced", Font.BOLD, 18));   // set font
+        pageDescLabel.setBounds(320, 110, 600, 30);  // set bounds
         pageDescLabel.setForeground(Color.BLACK);    // set text color to black
         add(pageDescLabel);  // add page description label to window
 
         // add first name label
         JLabel firstNameLabel = new JLabel("First Name:");   // create first name label
-        firstNameLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
-        firstNameLabel.setBounds(100, 170, 100, 30);  // set bounds
+        firstNameLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
+        firstNameLabel.setBounds(100, 170, 200, 30);  // set bounds
         firstNameLabel.setForeground(Color.BLACK);    // set text color to black
         add(firstNameLabel);  // add first name label to window
         
         // add first name text field
         firstNameText = new JTextField();   // create first name text field
-        firstNameText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        firstNameText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         firstNameText.setBounds(275, 170, 450, 30); // set bounds
         firstNameText.setForeground(Color.BLACK);   // set text color to black
         add(firstNameText); // add first name text field to window
 
         // add last name label
         JLabel lastNameLabel = new JLabel("Last Name:");   // create last name label
-        lastNameLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
-        lastNameLabel.setBounds(100, 220, 100, 30);  // set bounds
+        lastNameLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
+        lastNameLabel.setBounds(100, 220, 200, 30);  // set bounds
         lastNameLabel.setForeground(Color.BLACK);    // set text color to black
         add(lastNameLabel);  // add last name label to window
 
         // add last name text field
         lastNameText = new JTextField();   // create last name text field
-        lastNameText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        lastNameText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         lastNameText.setBounds(275, 220, 450, 30); // set bounds
         lastNameText.setForeground(Color.BLACK);   // set text color to black
         add(lastNameText); // add last name text field to window
 
         // add gender label
         JLabel genderLabel = new JLabel("Gender:");   // create gender label
-        genderLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        genderLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         genderLabel.setBounds(100, 270, 100, 30);  // set bounds
         genderLabel.setForeground(Color.BLACK);    // set text color to black
         add(genderLabel);  // add gender label to window
@@ -105,7 +106,7 @@ public class SignUp extends JFrame implements ActionListener{
         // add gender radio buttons
         // add male radio button
         maleButton = new JRadioButton("Male");  // create male radio button
-        maleButton.setFont(new Font("Raleway", Font.BOLD, 14)); // set font
+        maleButton.setFont(new Font("Monospaced", Font.BOLD, 14)); // set font
         maleButton.setBounds(275, 270, 100, 30);    // set bounds
         maleButton.setForeground(Color.BLACK);  // set text color to black
         maleButton.setBackground(new Color(188, 230, 250)); // set background color
@@ -113,7 +114,7 @@ public class SignUp extends JFrame implements ActionListener{
 
         // add female radio button
         femaleButton = new JRadioButton("Female");  // create female radio button
-        femaleButton.setFont(new Font("Raleway", Font.BOLD, 14)); // set font
+        femaleButton.setFont(new Font("Monospaced", Font.BOLD, 14)); // set font
         femaleButton.setBounds(450, 270, 100, 30);  // set bounds
         femaleButton.setForeground(Color.BLACK);    // set text color to black
         femaleButton.setBackground(new Color(188, 230, 250));   // set background color to be same as frame's
@@ -126,7 +127,7 @@ public class SignUp extends JFrame implements ActionListener{
 
         // add DOB label
         JLabel DOBLabel = new JLabel("Date of Birth:");   // create DOB label
-        DOBLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        DOBLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         DOBLabel.setBounds(100, 320, 200, 30);  // set bounds
         DOBLabel.setForeground(Color.BLACK);    // set text color to black
         add(DOBLabel);  // add DOB label to window
@@ -136,40 +137,40 @@ public class SignUp extends JFrame implements ActionListener{
         dateChooser.setForeground(new Color(105, 105, 105));    // set color
         dateChooser.setBounds(275, 320, 450, 30);   // set bounds
         ((JTextFieldDateEditor) dateChooser.getDateEditor()).setForeground(Color.BLACK);    // set text color to black
-        ((JTextFieldDateEditor) dateChooser.getDateEditor()).setFont(new Font("Raleway", Font.BOLD, 14));   // set font
+        ((JTextFieldDateEditor) dateChooser.getDateEditor()).setFont(new Font("Monospaced", Font.BOLD, 14));   // set font
         add(dateChooser);   // add date chooser to window
 
         // add phone number label
         JLabel phoneLabel = new JLabel("Phone Number:");   // create phone number label
-        phoneLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        phoneLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         phoneLabel.setBounds(100, 370, 200, 30);  // set bounds
         phoneLabel.setForeground(Color.BLACK);    // set text color to black
         add(phoneLabel);  // add phone number label to window
 
         // add phone number text field
         phoneText = new JTextField();   // create phone number text field
-        phoneText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        phoneText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         phoneText.setBounds(275, 370, 450, 30); // set bounds
         phoneText.setForeground(Color.BLACK);   // set text color to black
         add(phoneText); // add phone number text field to window
 
         // add email label
         JLabel emailLabel = new JLabel("Email Address:");   // create email label
-        emailLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        emailLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         emailLabel.setBounds(100, 420, 200, 30);  // set bounds
         emailLabel.setForeground(Color.BLACK);    // set text color to black
         add(emailLabel);  // add email label to window
 
         // add email text field
         emailText = new JTextField();   // create email text field
-        emailText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        emailText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         emailText.setBounds(275, 420, 450, 30); // set bounds
         emailText.setForeground(Color.BLACK);   // set text color to black
         add(emailText); // add email text field to window
         
         // add marital status label
         JLabel maritalStatusLabel = new JLabel("Marital Status:");   // create marital status label
-        maritalStatusLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        maritalStatusLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         maritalStatusLabel.setBounds(100, 470, 200, 30);  // set bounds
         maritalStatusLabel.setForeground(Color.BLACK);    // set text color to black
         add(maritalStatusLabel);  // add marital status label to window
@@ -177,7 +178,7 @@ public class SignUp extends JFrame implements ActionListener{
         // add marital status radio buttons
         // add married radio button
         marriedButton = new JRadioButton("Married");    // create married radio button
-        marriedButton.setFont(new Font("Raleway", Font.BOLD, 14)); // set font
+        marriedButton.setFont(new Font("Monospaced", Font.BOLD, 14)); // set font
         marriedButton.setBounds(275, 470, 100, 30);  // set bounds
         marriedButton.setForeground(Color.BLACK);    // set text color to black
         marriedButton.setBackground(new Color(188, 230, 250));   // set background color to be same as frame's
@@ -185,7 +186,7 @@ public class SignUp extends JFrame implements ActionListener{
 
         // add single radio button
         singleButton = new JRadioButton("Single");    // create single radio button
-        singleButton.setFont(new Font("Raleway", Font.BOLD, 14)); // set font
+        singleButton.setFont(new Font("Monospaced", Font.BOLD, 14)); // set font
         singleButton.setBounds(450, 470, 100, 30);  // set bounds
         singleButton.setForeground(Color.BLACK);    // set text color to black
         singleButton.setBackground(new Color(188, 230, 250));   // set background color to be same as frame's
@@ -193,7 +194,7 @@ public class SignUp extends JFrame implements ActionListener{
 
         // add other radio button
         otherButton = new JRadioButton("Other");    // create other radio button
-        otherButton.setFont(new Font("Raleway", Font.BOLD, 14)); // set font
+        otherButton.setFont(new Font("Monospaced", Font.BOLD, 14)); // set font
         otherButton.setBounds(625, 470, 100, 30);  // set bounds
         otherButton.setForeground(Color.BLACK);    // set text color to black
         otherButton.setBackground(new Color(188, 230, 250));   // set background color to be same as frame's
@@ -207,67 +208,68 @@ public class SignUp extends JFrame implements ActionListener{
 
         // add address label
         JLabel addressLabel = new JLabel("Address:");   // create address label
-        addressLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        addressLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         addressLabel.setBounds(100, 520, 200, 30);  // set bounds
         addressLabel.setForeground(Color.BLACK);    // set text color to black
         add(addressLabel);  // add address label to window
 
         // add address text field
         addressText = new JTextField();   // create address text field
-        addressText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        addressText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         addressText.setBounds(275, 520, 450, 30); // set bounds
         addressText.setForeground(Color.BLACK);   // set text color to black
         add(addressText); // add address text field to window
 
         // add city label
         JLabel cityLabel = new JLabel("City:");   // create city label
-        cityLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        cityLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         cityLabel.setBounds(100, 570, 200, 30);  // set bounds
         cityLabel.setForeground(Color.BLACK);    // set text color to black
         add(cityLabel);  // add city label to window
 
         // add city text field
         cityText = new JTextField();   // create city text field
-        cityText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        cityText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         cityText.setBounds(275, 570, 450, 30); // set bounds
         cityText.setForeground(Color.BLACK);   // set text color to black
         add(cityText); // add city text field to window
 
         // add state label
         JLabel stateLabel = new JLabel("State:");   // create state label
-        stateLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        stateLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         stateLabel.setBounds(100, 620, 200, 30);  // set bounds
         stateLabel.setForeground(Color.BLACK);    // set text color to black
         add(stateLabel);  // add state label to window
 
         // add state text field
         stateText = new JTextField();   // create state text field
-        stateText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        stateText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         stateText.setBounds(275, 620, 450, 30); // set bounds
         stateText.setForeground(Color.BLACK);   // set text color to black
         add(stateText); // add state text field to window
 
         // add zip code label
         JLabel zipLabel = new JLabel("Zip Code:");   // create zip code label
-        zipLabel.setFont(new Font("Raleway", Font.BOLD, 16));   // set font
+        zipLabel.setFont(new Font("Monospaced", Font.BOLD, 16));   // set font
         zipLabel.setBounds(100, 670, 200, 30);  // set bounds
         zipLabel.setForeground(Color.BLACK);    // set text color to black
         add(zipLabel);  // add zip code label to window
 
         // add zip code text field
         zipText = new JTextField();   // create zip code text field
-        zipText.setFont(new Font("Arial", Font.BOLD, 14));    // set font
+        zipText.setFont(new Font("Monospaced", Font.BOLD, 14));    // set font
         zipText.setBounds(275, 670, 450, 30); // set bounds
         zipText.setForeground(Color.BLACK);   // set text color to black
         add(zipText); // add zip code text field to window
 
         // add next button
         nextButton = new JButton("Next");   // create next button
-        nextButton.setFont(new Font("Raleway", Font.BOLD, 14)); // set font
+        nextButton.setFont(new Font("Monospaced", Font.BOLD, 14)); // set font
         nextButton.setBounds(645, 720, 80, 30); // set bounds
         nextButton.setBackground(Color.BLACK);  // set button color to black
         nextButton.setForeground(Color.WHITE);  // set text color to white
         nextButton.addActionListener(this);
+        getRootPane().setDefaultButton(nextButton);   // make enter key function as next button
         add(nextButton);    // add next button to window
         
         setVisible(true);   // make window visible
