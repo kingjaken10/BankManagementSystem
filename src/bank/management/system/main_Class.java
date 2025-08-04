@@ -115,7 +115,8 @@ public class main_Class extends JFrame implements ActionListener{
         }
         // clicked pin change button
         else if(e.getSource() == pinChangeButton){
-
+            new Pin(pin);   // open pin window
+            setVisible(false);  // make this window invisible
         }
         // clicked cash withdrawal button
         else if(e.getSource() == withdrawalButton){
