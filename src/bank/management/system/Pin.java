@@ -1,12 +1,12 @@
 package bank.management.system;
 
+import java.sql.*;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 
 public class Pin extends JFrame implements ActionListener{
     
@@ -15,9 +15,6 @@ public class Pin extends JFrame implements ActionListener{
     JButton changeButton, backButton;  // change and back buttons 
 
     String pin;    // stores pin number
-
-    // create a LineBorder with a specific color and thickness
-    Border whiteBorder =  new LineBorder(Color.WHITE, 2);
 
     Pin(String pin){
         super("Deposit");   // call parent constructor 
@@ -60,7 +57,6 @@ public class Pin extends JFrame implements ActionListener{
         pinPass.setBounds(600, 200, 200, 30);   // set bounds
         pinPass.setForeground(Color.WHITE); // set text color to white
         pinPass.setBackground(new Color(65, 125, 128));  // set background color
-        pinPass.setBorder(whiteBorder);    // set border color to white
         pinPass.setCaretColor(Color.WHITE); // make cursor white
         atmImage.add(pinPass);  // add new pin password field on ATM image
 
@@ -77,7 +73,6 @@ public class Pin extends JFrame implements ActionListener{
         pinConfirmPass.setBounds(600, 240, 200, 30);   // set bounds
         pinConfirmPass.setForeground(Color.WHITE); // set text color to white
         pinConfirmPass.setBackground(new Color(65, 125, 128));  // set background color
-        pinConfirmPass.setBorder(whiteBorder);    // set border color to white
         pinConfirmPass.setCaretColor(Color.WHITE); // make cursor white
         atmImage.add(pinConfirmPass);  // add pin confirmation password field on ATM image
 
@@ -103,7 +98,77 @@ public class Pin extends JFrame implements ActionListener{
     @Override
     // clicked change or back buttons
     public void actionPerformed(ActionEvent e){
+
+        try{
+            // get new pin and pin confirmation
+            char[] pinChar = pinPass.getPassword(); // get new pin as a char array
+            char[] pinConfirmChar = pinConfirmPass.getPassword();   // get pin confirmation as a char array
+            String newPin = new String(pinChar);    //  convert new pin to String
+            String pinConfirm = new String(pinConfirmChar); // convert pin confirmation to String
+
+            // change button clicked
+            if(e.getSource() == changeButton){
+
+                 // check if new pin inputted
+                if(newPin.equals("")){
+                    JOptionPane.showMessageDialog(null, "Enter New PIN");   // display error message
+                    return;
+                }
+
+                // check if pin confirmation inputted
+                if(pinConfirm.equals("")){
+                    JOptionPane.showMessageDialog(null, "Confirm New PIN");   // display error message
+                    return;
+                }
+
+                // check if new pin and pin confirmation match
+                if(!newPin.equals(pinConfirm)){
+                    JOptionPane.showMessageDialog(null, "Entered PIN entries do not match", "Error", JOptionPane.ERROR_MESSAGE);   // display error message
+                    return;
+                }
+
+                // update tables in database with new pin
+                updatePin("Bank", newPin);  // update Bank table
+                updatePin("Login", newPin); // update Login table
+                updatePin("SignUpThree", newPin);   // update SignUpThree table
+
+                // database updated successfully
+                JOptionPane.showMessageDialog(null, "PIN Changed Successfully");    // display message that pin was changed
+                new main_Class(newPin); //open transaction window
+                setVisible(false);    // make this window invisible
+
+            }
+            // back button clicked
+            else if(e.getSource() == backButton){
+                new main_Class(pin);    // open transaction window
+                setVisible(false);  // make this window invisible
+            }
+        }
+        catch(Exception E){
+            E.printStackTrace();    // if exception is thrown, print stack trace
+        }
+    }
+
+    public void updatePin(String tableName, String newPin){
         
+        try{
+        // update table in database with new pin
+        Connect con1 = new Connect();   // create a Connect object
+        Connection conn = con1.getConnection(); // get the connection from the Connect class 
+
+        String query = "UPDATE " + tableName + " SET Pin = ? WHERE Pin = ?"; // query with placeholders
+
+        PreparedStatement preparedStatement = conn.prepareStatement(query); // prepare the SQL query for execution
+
+        // set the parameters for the query
+        preparedStatement.setString(1, newPin);    // set new pin at position 1
+        preparedStatement.setString(2, pin);  // set current pin at position 2
+
+        preparedStatement.executeUpdate();  // execute the prepared query and update database
+        }
+        catch(Exception e){
+            e.printStackTrace();    // if exception is thrown, print stack trace
+        }
     }
 
     public static void main(String[] args) {
