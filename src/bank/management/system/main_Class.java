@@ -125,7 +125,7 @@ public class main_Class extends JFrame implements ActionListener{
         }
         // clicked mini statement button
         else if(e.getSource() == miniStmtButton){
-
+            new Mini(pin);  // open mini statement window
         }
         // clicked balance inquiry button
         else if(e.getSource() == balanceButton){
