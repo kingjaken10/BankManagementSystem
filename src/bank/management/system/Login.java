@@ -40,7 +40,7 @@ public class Login extends JFrame implements ActionListener{
         Image bank2 = bank1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT); // resize the image
         ImageIcon bank3 = new ImageIcon(bank2); // create a new ImageIcon to store the resized image
         JLabel bankImage = new JLabel(bank3);   // add image to a label
-        bankImage.setBounds(370, 10, 100, 100); // resize and position the label
+        bankImage.setBounds(370, 30, 100, 100); // resize and position the label
         add(bankImage); // add label to window
 
         // add labels and respective text fields to window
@@ -49,7 +49,7 @@ public class Login extends JFrame implements ActionListener{
         // welcomeLabel.setForeground(Color.WHITE);  // set text color to white
         welcomeLabel.setForeground(Color.BLACK);  // set text color to black
         welcomeLabel.setFont(new Font("Monospaced", Font.BOLD, 43));  // set font
-        welcomeLabel.setBounds(240, 120, 450, 40);    // set bounds
+        welcomeLabel.setBounds(240, 140, 450, 40);    // set bounds
         add(welcomeLabel);    // add welcome label to window
 
         // add card number label
@@ -57,12 +57,12 @@ public class Login extends JFrame implements ActionListener{
         // cardNoLabel.setForeground(Color.WHITE);  // set text color to white
         cardNoLabel.setForeground(Color.BLACK);  // set text color to black
         cardNoLabel.setFont(new Font("Monospaced", Font.BOLD, 28));  // set font
-        cardNoLabel.setBounds(240, 190, 375, 30);    // set bounds
+        cardNoLabel.setBounds(240, 210, 375, 30);    // set bounds
         add(cardNoLabel);    // add card number label to window
 
         // add text field for card number
         cardNoText = new JTextField(15);    // create card number text field
-        cardNoText.setBounds(380, 190, 220, 30);    // set bounds
+        cardNoText.setBounds(380, 210, 220, 30);    // set bounds
         cardNoText.setFont(new Font("Monospaced", Font.BOLD, 14));   // set font  
         // cardNoText.setBackground(Color.DARK_GRAY);  // set background color to dark gray
         // cardNoText.setForeground(Color.WHITE);  // set text color to white
@@ -78,12 +78,12 @@ public class Login extends JFrame implements ActionListener{
         // pinLabel.setForeground(Color.WHITE);  // set text color to white
         pinLabel.setForeground(Color.BLACK);  // set text color to black
         pinLabel.setFont(new Font("Monospaced", Font.BOLD, 28));  // set font
-        pinLabel.setBounds(240, 230, 375, 30);    // set bounds
+        pinLabel.setBounds(240, 250, 375, 30);    // set bounds
         add(pinLabel);    // add pin label to window
 
         // add password field for pin
         pinField = new JPasswordField(15);    // create pin password field
-        pinField.setBounds(380, 230, 220, 30);    // set bounds
+        pinField.setBounds(380, 250, 220, 30);    // set bounds
         pinField.setFont(new Font("Monospaced", Font.BOLD, 14));   // set font
         // pinField.setBackground(Color.DARK_GRAY);  // set background color to dark gray
         // pinField.setForeground(Color.WHITE);  // set text color to white
@@ -102,7 +102,7 @@ public class Login extends JFrame implements ActionListener{
         signInButton.setBackground(Color.DARK_GRAY);    // set background color to dark gray
         // signInButton.setBorder(whiteBorder);    // set border color to white
         signInButton.setBorder(darkGrayBorder);    // set border color to dark gray
-        signInButton.setBounds(310, 295, 100, 30);  // set bounds
+        signInButton.setBounds(310, 315, 100, 30);  // set bounds
         signInButton.addActionListener(this);   // add ActionListener
         getRootPane().setDefaultButton(signInButton);   // make enter key function as sign in button
         add(signInButton);  // add sign in button to window
@@ -114,7 +114,7 @@ public class Login extends JFrame implements ActionListener{
         clearButton.setBackground(Color.DARK_GRAY); // set background color to dark gray
         // clearButton.setBorder(whiteBorder); // set border color to white
         clearButton.setBorder(darkGrayBorder);    // set border color to dark gray
-        clearButton.setBounds(430, 295, 100, 30);   // set bounds
+        clearButton.setBounds(430, 315, 100, 30);   // set bounds
         clearButton.addActionListener(this);    // add ActionListener
         add(clearButton);   // add clear button to window
 
@@ -125,7 +125,7 @@ public class Login extends JFrame implements ActionListener{
         signUpButton.setBackground(Color.DARK_GRAY);    // set background color to dark gray
         // signUpButton.setBorder(whiteBorder);    // set border color to white
         signUpButton.setBorder(darkGrayBorder);    // set border color to dark gray
-        signUpButton.setBounds(310, 345, 220, 30);  // set bounds
+        signUpButton.setBounds(310, 365, 220, 30);  // set bounds
         signUpButton.addActionListener(this);   // add ActionListener
         add(signUpButton);  // add sign up button to window
 

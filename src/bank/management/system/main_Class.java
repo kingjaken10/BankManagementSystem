@@ -38,13 +38,13 @@ public class main_Class extends JFrame implements ActionListener{
         // add transaction prompt label
         JLabel transactionLabel = new JLabel("PLEASE SELECT YOUR TRANSACTION");    // create transaction prompt label
         transactionLabel.setFont(new Font("System", Font.BOLD, 22)); // set font
-        transactionLabel.setBounds(415, 180, 700, 35);   // set bounds
+        transactionLabel.setBounds(415, 190, 700, 35);   // set bounds
         transactionLabel.setForeground(Color.WHITE); // set text color to white
         atmImage.add(transactionLabel);  // add transaction prompt label on ATM image
 
         // add deposit button
         depositButton = new JButton("DEPOSIT"); // create deposit button
-        depositButton.setBounds(415, 272, 150, 34);    // set bounds
+        depositButton.setBounds(415, 284, 150, 34);    // set bounds
         depositButton.setForeground(Color.WHITE);  // set text color to white
         depositButton.setBackground(new Color(65, 125, 128));  // set background color
         depositButton.addActionListener(this);  // add ActionListener
@@ -52,7 +52,7 @@ public class main_Class extends JFrame implements ActionListener{
 
         // add fast cash button
         fastCashButton = new JButton("FAST CASH"); // create fast cash button
-        fastCashButton.setBounds(415, 319, 150, 34);    // set bounds
+        fastCashButton.setBounds(415, 333, 150, 34);    // set bounds
         fastCashButton.setForeground(Color.WHITE);  // set text color to white
         fastCashButton.setBackground(new Color(65, 125, 128));  // set background color
         fastCashButton.addActionListener(this);  // add ActionListener
@@ -60,7 +60,7 @@ public class main_Class extends JFrame implements ActionListener{
         
         // add pin change button
         pinChangeButton = new JButton("PIN CHANGE"); // create pin change button
-        pinChangeButton.setBounds(415, 366, 150, 34);    // set bounds
+        pinChangeButton.setBounds(415, 382, 150, 34);    // set bounds
         pinChangeButton.setForeground(Color.WHITE);  // set text color to white
         pinChangeButton.setBackground(new Color(65, 125, 128));  // set background color
         pinChangeButton.addActionListener(this);  // add ActionListener
@@ -68,7 +68,7 @@ public class main_Class extends JFrame implements ActionListener{
         
         // add cash withdrawal button
         withdrawalButton = new JButton("CASH WITHDRAWAL"); // create cash withdrawal button
-        withdrawalButton.setBounds(690, 272, 150, 34);    // set bounds
+        withdrawalButton.setBounds(690, 284, 150, 34);    // set bounds
         withdrawalButton.setForeground(Color.WHITE);  // set text color to white
         withdrawalButton.setBackground(new Color(65, 125, 128));  // set background color
         withdrawalButton.addActionListener(this);  // add ActionListener
@@ -76,7 +76,7 @@ public class main_Class extends JFrame implements ActionListener{
 
         // add mini statement button
         miniStmtButton = new JButton("MINI STATEMENT"); // create mini statement button
-        miniStmtButton.setBounds(690, 319, 150, 34);    // set bounds
+        miniStmtButton.setBounds(690, 333, 150, 34);    // set bounds
         miniStmtButton.setForeground(Color.WHITE);  // set text color to white
         miniStmtButton.setBackground(new Color(65, 125, 128));  // set background color
         miniStmtButton.addActionListener(this);  // add ActionListener
@@ -84,7 +84,7 @@ public class main_Class extends JFrame implements ActionListener{
 
         // add balance inquiry button
         balanceButton = new JButton("BALANCE INQUIRY"); // create balance inquiry button
-        balanceButton.setBounds(690, 366, 150, 34);    // set bounds
+        balanceButton.setBounds(690, 382, 150, 34);    // set bounds
         balanceButton.setForeground(Color.WHITE);  // set text color to white
         balanceButton.setBackground(new Color(65, 125, 128));  // set background color
         balanceButton.addActionListener(this);  // add ActionListener
@@ -92,7 +92,7 @@ public class main_Class extends JFrame implements ActionListener{
 
         // add exit button
         exitButton = new JButton("EXIT"); // create exit button
-        exitButton.setBounds(690, 413, 150, 34);    // set bounds
+        exitButton.setBounds(690, 430, 150, 34);    // set bounds
         exitButton.setForeground(Color.WHITE);  // set text color to white
         exitButton.setBackground(new Color(65, 125, 128));  // set background color
         exitButton.addActionListener(this);  // add ActionListener

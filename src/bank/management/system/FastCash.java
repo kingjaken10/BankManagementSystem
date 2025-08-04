@@ -41,13 +41,13 @@ public class FastCash extends JFrame implements ActionListener{
         // add withdrawl prompt label
         JLabel transactionLabel = new JLabel("SELECT WITHDRAWAL AMOUNT");    // create withdrawl prompt label
         transactionLabel.setFont(new Font("System", Font.BOLD, 22)); // set font
-        transactionLabel.setBounds(445, 180, 700, 35);   // set bounds
+        transactionLabel.setBounds(445, 190, 700, 35);   // set bounds
         transactionLabel.setForeground(Color.WHITE); // set text color to white
         atmImage.add(transactionLabel);  // add withdrawl prompt label on ATM image
 
         // add $100 button
         hundoButton = new JButton("$100"); // create $100 button
-        hundoButton.setBounds(415, 272, 150, 34);    // set bounds
+        hundoButton.setBounds(415, 284, 150, 34);    // set bounds
         hundoButton.setForeground(Color.WHITE);  // set text color to white
         hundoButton.setBackground(new Color(65, 125, 128));  // set background color
         hundoButton.addActionListener(this);  // add ActionListener
@@ -55,7 +55,7 @@ public class FastCash extends JFrame implements ActionListener{
 
         // add $500 button
         fiveHundoButton = new JButton("$500"); // create $500 button
-        fiveHundoButton.setBounds(415, 319, 150, 34);    // set bounds
+        fiveHundoButton.setBounds(415, 333, 150, 34);    // set bounds
         fiveHundoButton.setForeground(Color.WHITE);  // set text color to white
         fiveHundoButton.setBackground(new Color(65, 125, 128));  // set background color
         fiveHundoButton.addActionListener(this);  // add ActionListener
@@ -63,7 +63,7 @@ public class FastCash extends JFrame implements ActionListener{
         
         // add $1,000 button
         thousandButton = new JButton("$1000"); // create $1,000 button
-        thousandButton.setBounds(415, 366, 150, 34);    // set bounds
+        thousandButton.setBounds(415, 382, 150, 34);    // set bounds
         thousandButton.setForeground(Color.WHITE);  // set text color to white
         thousandButton.setBackground(new Color(65, 125, 128));  // set background color
         thousandButton.addActionListener(this);  // add ActionListener
@@ -71,7 +71,7 @@ public class FastCash extends JFrame implements ActionListener{
         
         // add $2,000 button
         twoThousandButton = new JButton("$2000"); // create $2,000 button
-        twoThousandButton.setBounds(690, 272, 150, 34);    // set bounds
+        twoThousandButton.setBounds(690, 284, 150, 34);    // set bounds
         twoThousandButton.setForeground(Color.WHITE);  // set text color to white
         twoThousandButton.setBackground(new Color(65, 125, 128));  // set background color
         twoThousandButton.addActionListener(this);  // add ActionListener
@@ -79,7 +79,7 @@ public class FastCash extends JFrame implements ActionListener{
 
         // add $5,000 button
         fiveThousandButton = new JButton("$5000"); // create $5,000 button
-        fiveThousandButton.setBounds(690, 319, 150, 34);    // set bounds
+        fiveThousandButton.setBounds(690, 333, 150, 34);    // set bounds
         fiveThousandButton.setForeground(Color.WHITE);  // set text color to white
         fiveThousandButton.setBackground(new Color(65, 125, 128));  // set background color
         fiveThousandButton.addActionListener(this);  // add ActionListener
@@ -87,7 +87,7 @@ public class FastCash extends JFrame implements ActionListener{
 
         // add $10,000 button
         tenThousandButton = new JButton("$10000"); // create $10,000 button
-        tenThousandButton.setBounds(690, 366, 150, 34);    // set bounds
+        tenThousandButton.setBounds(690, 382, 150, 34);    // set bounds
         tenThousandButton.setForeground(Color.WHITE);  // set text color to white
         tenThousandButton.setBackground(new Color(65, 125, 128));  // set background color
         tenThousandButton.addActionListener(this);  // add ActionListener
@@ -95,7 +95,7 @@ public class FastCash extends JFrame implements ActionListener{
 
         // add back button
         backButton = new JButton("BACK"); // create back button
-        backButton.setBounds(690, 413, 150, 34);    // set bounds
+        backButton.setBounds(690, 430, 150, 34);    // set bounds
         backButton.setForeground(Color.WHITE);  // set text color to white
         backButton.setBackground(new Color(65, 125, 128));  // set background color
         backButton.addActionListener(this);  // add ActionListener

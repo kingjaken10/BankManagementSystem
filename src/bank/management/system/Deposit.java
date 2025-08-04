@@ -58,7 +58,7 @@ public class Deposit extends JFrame implements ActionListener{
 
         // add deposit button
         depositButton = new JButton("DEPOSIT"); // create deposit button
-        depositButton.setBounds(710, 366, 130, 34);    // set bounds
+        depositButton.setBounds(710, 382, 130, 34);    // set bounds
         depositButton.setForeground(Color.WHITE);  // set text color to white
         depositButton.setBackground(new Color(65, 125, 128));  // set background color
         depositButton.addActionListener(this);  // add ActionListener
@@ -67,7 +67,7 @@ public class Deposit extends JFrame implements ActionListener{
 
         // add back button
         backButton = new JButton("BACK"); // create back button
-        backButton.setBounds(710, 413, 130, 34);    // set bounds
+        backButton.setBounds(710, 430, 130, 34);    // set bounds
         backButton.setForeground(Color.WHITE);  // set text color to white
         backButton.setBackground(new Color(65, 125, 128));  // set background color
         backButton.addActionListener(this);  // add ActionListener
