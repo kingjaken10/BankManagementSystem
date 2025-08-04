@@ -34,20 +34,20 @@ public class Mini extends JFrame implements ActionListener{
         // add title label
         JLabel titleLabel = new JLabel("--------MINI STATEMENT--------");   // create title label
         titleLabel.setFont(new Font("Monospaced", Font.BOLD, 16)); // set font
-        titleLabel.setBounds(-10, 5, 400, 20);   // set bounds
+        titleLabel.setBounds(-10, 10, 400, 20);   // set bounds
         titleLabel.setHorizontalAlignment(JTextField.CENTER);   // center align text
         add(titleLabel);  // add title label to window
 
         // card number label
         JLabel cardNoLabel = new JLabel();   // create card number label
         cardNoLabel.setFont(new Font("Monospaced", Font.BOLD, 16));    // set font
-        cardNoLabel.setBounds(20, 40, 300, 20);   // set bounds
+        cardNoLabel.setBounds(20, 45, 300, 20);   // set bounds
         add(cardNoLabel);  // add card number label to window
 
         // add balance label
         JLabel balanceLabel = new JLabel();   // create balance label
         balanceLabel.setFont(new Font("Monospaced", Font.BOLD, 16));    // set font
-        balanceLabel.setBounds(20, 400, 300, 20);   // set bounds
+        balanceLabel.setBounds(20, 405, 300, 20);   // set bounds
         add(balanceLabel);  // add balance label to window
 
         // set up statement label
@@ -58,7 +58,7 @@ public class Mini extends JFrame implements ActionListener{
         // add exit button
         exitButton = new JButton("EXIT");   // create exit button
         exitButton.setFont(new Font("Monospaced", Font.BOLD, 14));  // set font
-        exitButton.setBounds(20, 450, 75, 25); // set bounds
+        exitButton.setBounds(20, 455, 75, 25); // set bounds
         exitButton.setForeground(Color.WHITE);  // set text color to white
         exitButton.setBackground(Color.BLACK);  // set button color to black
         exitButton.addActionListener(this); // add ActionListener
@@ -124,7 +124,7 @@ public class Mini extends JFrame implements ActionListener{
 
             // add statement scroll pane
             JScrollPane scrollPane = new JScrollPane(statementLabel);   // create statement scroll pane
-            scrollPane.setBounds(20, 80, 350, 300); // set bounds
+            scrollPane.setBounds(20, 85, 350, 300); // set bounds
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);    // vertical scroll bar appears if needed
             scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);    // horizontal scroll bar appears if needed
             scrollPane.setOpaque(false);    // make scroll pane not opaque

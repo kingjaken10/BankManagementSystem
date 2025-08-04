@@ -65,7 +65,7 @@ public class Withdrawal extends JFrame implements ActionListener{
 
         // add withdraw button
         withdrawButton = new JButton("WITHDRAW"); // create withdraw button
-        withdrawButton.setBounds(710, 366, 130, 34);    // set bounds
+        withdrawButton.setBounds(710, 382, 130, 34);    // set bounds
         withdrawButton.setForeground(Color.WHITE);  // set text color to white
         withdrawButton.setBackground(new Color(65, 125, 128));  // set background color
         withdrawButton.addActionListener(this);  // add ActionListener
@@ -74,7 +74,7 @@ public class Withdrawal extends JFrame implements ActionListener{
 
         // add back button
         backButton = new JButton("BACK"); // create back button
-        backButton.setBounds(710, 413, 130, 34);    // set bounds
+        backButton.setBounds(710, 430, 130, 34);    // set bounds
         backButton.setForeground(Color.WHITE);  // set text color to white
         backButton.setBackground(new Color(65, 125, 128));  // set background color
         backButton.addActionListener(this);  // add ActionListener
