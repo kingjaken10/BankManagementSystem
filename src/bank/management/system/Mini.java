@@ -26,6 +26,7 @@ public class Mini extends JFrame implements ActionListener{
         getContentPane().setBackground(new Color(192, 134, 240));   // set window background color
         setSize(400, 540);  // set window size
         setLocationRelativeTo(null);    // center align window
+        setUndecorated(true);   // hides window border
         setResizable(false); // fix size of window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set default close operation
         
@@ -49,8 +50,10 @@ public class Mini extends JFrame implements ActionListener{
         balanceLabel.setBounds(20, 400, 300, 20);   // set bounds
         add(balanceLabel);  // add balance label to window
 
-        // create statement label
-        JLabel statementLabel = new JLabel();
+        // set up statement label
+        JLabel statementLabel = new JLabel();   // create statement label
+        statementLabel.setFont(new Font("Monospaced", Font.BOLD, 11));  // set font
+        statementLabel.setVerticalAlignment(SwingConstants.TOP);    // make text always appear at top of label
 
         // add exit button
         exitButton = new JButton("EXIT");   // create exit button
@@ -103,9 +106,16 @@ public class Mini extends JFrame implements ActionListener{
 
             while(resultSet.next()){
                 // update statement label
-                statementLabel.setText("<html>" + statementLabel.getText().replace("<html>", "").replace("</html>","") 
-                                       + resultSet.getString("Date") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + resultSet.getString("Type") 
-                                       + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + resultSet.getString("Amount") + "<br><br><html>"); // set text of statement label
+                if(resultSet.getString("Type").equals("Deposit")){
+                    statementLabel.setText("<html>" + statementLabel.getText().replace("<html>", "").replace("</html>","") 
+                                       + resultSet.getString("Date") + "&nbsp;&nbsp;&nbsp;&nbsp;" + resultSet.getString("Type") 
+                                       + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + resultSet.getString("Amount") + "<br><br><html>"); // set text of statement label
+                }
+                else{
+                    statementLabel.setText("<html>" + statementLabel.getText().replace("<html>", "").replace("</html>","") 
+                                       + resultSet.getString("Date") + "&nbsp;&nbsp;&nbsp;&nbsp;" + resultSet.getString("Type") 
+                                       + "&nbsp;&nbsp;&nbsp;&nbsp;$" + resultSet.getString("Amount") + "<br><br><html>"); // set text of statement label
+                }
 
                 // calculate balance
                 if(resultSet.getString("Type").equals("Deposit")) balance += Double.parseDouble(resultSet.getString("Amount")); // add to balance if entry is a deposit
@@ -117,6 +127,7 @@ public class Mini extends JFrame implements ActionListener{
             scrollPane.setBounds(20, 80, 350, 300); // set bounds
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);    // vertical scroll bar appears if needed
             scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);    // horizontal scroll bar appears if needed
+            scrollPane.setOpaque(false);    // make scroll pane not opaque
             scrollPane.getViewport().setBackground(new Color(192, 134, 240));   // set background color to be same as window's
             scrollPane.setBorder(new LineBorder(new Color(192, 134, 240))); // set border color to be same as window's
             add(scrollPane);    // add statement scroll pane to window
