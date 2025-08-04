@@ -26,15 +26,16 @@ public class Deposit extends JFrame implements ActionListener{
         setLayout(null);
         setSize(1545, 1000);  // set window size
         setLocationRelativeTo(null);    // center align window
+        setUndecorated(true);   // hides window border
         setResizable(false); // fix size of window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // set default close operation
 
         // set background image of window (ATM image)
         ImageIcon atm1 =  new ImageIcon(ClassLoader.getSystemResource("icons/atm2.png"));   // load the image
-        Image atm2 = atm1.getImage().getScaledInstance(1545, 835, Image.SCALE_DEFAULT);    // resize the image
+        Image atm2 = atm1.getImage().getScaledInstance(1545, 870, Image.SCALE_DEFAULT);    // resize the image
         ImageIcon atm3 = new ImageIcon(atm2);   // create a new ImageIcon to store the resized image
         JLabel atmImage = new JLabel(atm3); // add image to a label
-        atmImage.setBounds(0, 0, 1545, 835);   // resize and position the label
+        atmImage.setBounds(0, 0, 1545, 870);   // resize and position the label
         add(atmImage);  // add image to window
 
         // add labels and respective components to window
@@ -61,6 +62,7 @@ public class Deposit extends JFrame implements ActionListener{
         depositButton.setForeground(Color.WHITE);  // set text color to white
         depositButton.setBackground(new Color(65, 125, 128));  // set background color
         depositButton.addActionListener(this);  // add ActionListener
+        getRootPane().setDefaultButton(depositButton);   // make enter key function as deposit button
         atmImage.add(depositButton);   // add deposit button on ATM image
 
         // add back button
