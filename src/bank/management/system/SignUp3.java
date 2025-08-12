@@ -141,22 +141,7 @@ public class SignUp3 extends JFrame implements ActionListener{
         add(cardNoLabel2);  // add card number label to window
 
         // get last 4 digits of card number
-        String fourDigit = "";  // stores the last four digits of the card number but in reverse order
-        int temp = last8;   // stores last half of card number
-
-        // get the last four digits of the card number but in reverse order and store in fourDigit
-        for(int i = 0; i < 4; i++){
-            int num = temp % 10;
-            temp /= 10;
-            fourDigit += Integer.toString(num);
-        }
-
-        String lastFourDigits = ""; // stores the last four digits of the card number in the correct order
-
-        // reverse the order of fourDigit to get the last four digits of the card number in the correct order and store in lastFourDigits
-        for(int i = 3; i >= 0; i--){
-            lastFourDigits += fourDigit.charAt(i);
-        }
+        int lastFourDigits = last8 % 10000;
 
         // add card number info labels
         JLabel cardNoInfo1 = new JLabel("XXXX-XXXX-XXXX-" + lastFourDigits);   // create card number info label
