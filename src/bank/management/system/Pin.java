@@ -111,7 +111,7 @@ public class Pin extends JFrame implements ActionListener{
             // change button clicked
             if(e.getSource() == changeButton){
 
-                 // check if new pin inputted
+                // check if new pin inputted
                 if(newPin.equals("")){
                     JOptionPane.showMessageDialog(null, "Enter New PIN");   // display error message
                     return;

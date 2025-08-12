@@ -109,12 +109,12 @@ public class Mini extends JFrame implements ActionListener{
                 if(resultSet.getString("Type").equals("Deposit")){
                     statementLabel.setText("<html>" + statementLabel.getText().replace("<html>", "").replace("</html>","") 
                                        + resultSet.getString("Date") + "&nbsp;&nbsp;&nbsp;&nbsp;" + resultSet.getString("Type") 
-                                       + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + resultSet.getString("Amount") + "<br><br><html>"); // set text of statement label
+                                       + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + resultSet.getString("Amount") + "<br><br><html>"); // set text of statement label for deposit
                 }
                 else{
                     statementLabel.setText("<html>" + statementLabel.getText().replace("<html>", "").replace("</html>","") 
                                        + resultSet.getString("Date") + "&nbsp;&nbsp;&nbsp;&nbsp;" + resultSet.getString("Type") 
-                                       + "&nbsp;&nbsp;&nbsp;&nbsp;$" + resultSet.getString("Amount") + "<br><br><html>"); // set text of statement label
+                                       + "&nbsp;&nbsp;&nbsp;&nbsp;$" + resultSet.getString("Amount") + "<br><br><html>"); // set text of statement label for withdraw
                 }
 
                 // calculate balance
